@@ -414,6 +414,13 @@
     align-self: flex-start;
   }
 
+  .backToIndex {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+    padding-block: 0.35rem;
+  }
+
   .contactResolve {
     min-height: 21rem;
     padding-top: 3rem;

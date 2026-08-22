@@ -43,7 +43,7 @@
   position: absolute;
   top: 18.5vh;
   left: 3vw;
-  color: rgba(16, 16, 16, 0.52);
+  color: var(--muted-ink);
   font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -176,7 +176,7 @@
 }
 
 .workspaceLabel {
-  color: rgba(16, 16, 16, 0.56);
+  color: var(--muted-ink);
 }
 
 .scoutMediaPanel {
@@ -351,7 +351,7 @@
 }
 
 .techLabel {
-  color: rgba(16, 16, 16, 0.58);
+  color: var(--muted-ink);
 }
 
 .scoutTechRail ul,
@@ -408,6 +408,7 @@
   }
 
   .scoutIntro {
+    left: 60vw;
     width: 18rem;
   }
 
@@ -434,7 +435,7 @@
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 767px) {
   .scoutSequence {
     min-height: 0;
     overflow: visible;
@@ -616,75 +617,6 @@
 
   .scoutExit span:last-child {
     max-width: 16rem;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 899px) {
-  .scoutScene {
-    padding: 2rem 1.5rem 5.5rem;
-  }
-
-  .scoutBackplane {
-    height: 28rem;
-  }
-
-  .backplaneIndex {
-    top: 4.5rem;
-    left: 1.5rem;
-  }
-
-  .backplaneWord {
-    top: 8rem;
-    left: 1.5rem;
-    font-size: 21vw;
-  }
-
-  .scoutIntro {
-    margin-top: 3rem;
-    max-width: 25rem;
-  }
-
-  .scoutAxis {
-    top: 28rem;
-  }
-
-  .scoutViewport {
-    margin-top: 4.25rem;
-  }
-
-  .workspaceLead {
-    width: min(100%, 42rem);
-    margin-bottom: 2.8rem;
-  }
-
-  .workspaceLead h2 {
-    max-width: 12ch;
-    font-size: clamp(4.2rem, 9.6vw, 6.8rem);
-    line-height: 0.82;
-  }
-
-  .scoutMediaPanel,
-  .scoutMediaPrimary,
-  .scoutMediaSecondary {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .scoutMediaPrimary,
-  .scoutMediaSecondary {
-    aspect-ratio: 16 / 10;
-  }
-
-  .scoutMediaSecondary {
-    margin-top: 4rem;
-  }
-
-  .scoutDetailRail {
-    margin-top: 4rem;
-  }
-
-  .scoutTechRail {
-    margin-top: 3rem;
   }
 }
 

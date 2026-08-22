@@ -40,7 +40,7 @@ export const projects = {
     slug: "scoutlab",
     index: "02",
     title: "ScoutLab",
-    category: "Frontend software project.",
+    category: "A football scouting workspace for exploring player data and shortlisting targets.",
     description: "A React and TypeScript project with a stateful, client-side interface.",
     media: {
       src: "/projects/scoutlab/overview.png",

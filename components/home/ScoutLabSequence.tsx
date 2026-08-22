@@ -37,7 +37,7 @@ export function ScoutLabSequence() {
   const stateRef = useRef("SCOUTLAB / INTRO");
 
   useLayoutEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 899px)");
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
     const updateLayout = () => setIsMobile(mediaQuery.matches);
 
     updateLayout();
@@ -57,7 +57,7 @@ export function ScoutLabSequence() {
     const context = gsap.context(() => {
       const media = gsap.matchMedia();
 
-      media.add("(min-width: 900px)", () => {
+      media.add("(min-width: 768px)", () => {
         const setStateFromProgress = (progress: number) => {
           const current = [...spatialStates].reverse().find((item) => progress >= item.at) ?? spatialStates[0];
 
@@ -217,7 +217,7 @@ export function ScoutLabSequence() {
               ref={primaryMediaRef}
               className={`${styles.scoutMediaPanel} ${styles.scoutMediaPrimary}`}
             >
-              <ScoutMedia media={media} sizes="(max-width: 899px) 94vw, 52vw" />
+              <ScoutMedia media={media} sizes="(max-width: 767px) 94vw, 52vw" />
               <span className={styles.panelCorner} aria-hidden="true" />
               <span className={styles.panelStatus}>VIEW / OVERVIEW</span>
             </div>
@@ -225,7 +225,7 @@ export function ScoutLabSequence() {
             <div
               className={`${styles.scoutMediaPanel} ${styles.scoutMediaSecondary}`}
             >
-              <ScoutMedia media={secondaryMedia} sizes="(max-width: 899px) 94vw, 40vw" />
+              <ScoutMedia media={secondaryMedia} sizes="(max-width: 767px) 94vw, 40vw" />
               <span className={styles.panelCorner} aria-hidden="true" />
               <span className={styles.panelStatus}>VIEW / PLAYER PROFILE</span>
             </div>

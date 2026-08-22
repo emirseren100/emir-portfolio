@@ -848,6 +848,13 @@
     align-self: end;
   }
 
+  .inlineAction,
+  .selectedLink {
+    min-height: 1.5rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+
   .exitMarker {
     position: relative;
     right: auto;
