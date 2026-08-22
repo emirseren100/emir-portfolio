@@ -1,87 +1,84 @@
-# Yaratıcı Yön: E/M — Kinetik İndeks
+# Yaratıcı Yön: EMIR — Kinetik Sistem
 
 ## Tek cümlelik yön
 
-E/M, yaratıcı geliştirici portföyünü gösteren bir logo değil; işleri sıralayan, odaklayan ve birbirine bağlayan modüler bir editoryal indeks olacak. Her proje, aynı geometrik sistemin başka bir çalışma durumunu açacak: birleşik E/M yön bulmayı, ayrılmış modüller araştırmayı, çerçeve formu proje odaklamayı, yeniden birleşme ise iletişim kurmayı gösterecek.
+EMIR, yaratıcı geliştirici portföyünün statik logosu değil; işleri sıralayan, odaklayan ve birbirine bağlayan modüler bir editoryal sistemdir. Kelime önce kimlik olarak okunur, sonra aynı geometrinin başka bir görevi açılır: yapı, proje frame’i, metadata rail’i ve bir sonraki işe geçiş.
 
 ## Yaratıcı pozisyon
 
-Bu yön, “yeteneklerimi sergileyen bir ekran” yerine “arayüzlerin nasıl davrandığına dair çalışan bir örnek” önerir. Ziyaretçi yalnızca projeleri okumaz; bir karar mekanizmasının içinden geçirildiğini hisseder. Artefakt sayfada gezmek için kullanılan bir indeks olduğu için her hareketin bir soruya cevap vermesi gerekir: Neredeyim? Neye bakıyorum? Sırada ne var? İletişim kurmak için ne yapmalıyım?
+Bu yön, “yeteneklerimi sergileyen bir ekran” yerine “arayüzlerin nasıl davrandığına dair çalışan bir örnek” önerir. Ziyaretçi yalnızca projeleri okumaz; bir karar mekanizmasının içinden geçirildiğini hisseder. Artefakt sayfada gezmek için kullanılan bir indeks olduğu için her hareket şu sorulardan birine cevap vermelidir: Neredeyim? Neye bakıyorum? Sırada ne var? İletişim kurmak için ne yapmalıyım?
 
 ## Seçilen görsel ankraj
 
-**Ankraj: Swiss.** Yüksek kontrastlı beyaz yüzey, tek kobalt vurgu, sans-serif tipografi, saç teli grid çizgileri ve soldan hizalı asimetrik kompozisyon seçiliyor. Bu seçim, Lando’daki editoryal cesareti ve Lusion’daki teknik netliği alıp üç referansın renk/asset kimliğinden ayrılıyor. Arayüz “fütüristik” görünmek için neon, glow, cam veya rastgele parçacık kullanmayacak.
+**Ankraj: Swiss punk record-label.** Yüksek kontrastlı sıcak nötr yüzey, near-black tipografi, tek kobalt vurgu, saç teli grid çizgileri ve büyük sans-serif ölçek korunur; ancak kompozisyona poster/record-label gerilimi veren sert crop’lar, bilinçli asimetri ve endeks işaretleri eklenir. Arayüz “fütüristik” görünmek için neon, glow, cam veya rastgele parçacık kullanmayacak.
 
-**Ayırt edici hareket:** E/M’nin altı plan modülü, scroll boyunca dekoratif olarak uçuşmak yerine bilgi mimarisini kurar. Birleşik monogram bir indeks düğümüdür; ayrıldığı anda parçalar proje görselinin crop pencerelerini, metadata kolonlarını veya geçiş maskesini oluşturur.
+**Ayırt edici hareket:** EMIR’in harfleri scroll boyunca dekoratif olarak uçuşmaz; kendi işlevlerine dönüşür. E frame ve yatay rayları, M diyagonal yönü, I metadata/index omurgası, R ise maske ve proje kenarı olur. Böylece kimlik ile içerik arasında kopuk bir geçiş yerine aynı nesnenin görev değiştirmesi görünür.
 
-## Konsept: E/M — Kinetik İndeks
+## Konsept: EMIR — Kinetik Sistem
 
 ### Artefaktın yapısı
 
-E/M, iki harfin kesişiminden türeyen altı düz modülden oluşur:
+EMIR tek bir modüler SVG wordmark’ı olarak kurulur:
 
-1. üç kısa yatay E kolu,
-2. ortak dikey omurga,
-3. M’nin iki dış ayağı,
-4. ortada okunabilirliği sağlayan negatif kanal.
+1. **E:** dikey gövde ve üç yatay rail; grid ve proje frame’inin taşıyıcısıdır.
+2. **M:** iki yapısal diyagonal; yön, derinlik ve geçiş kuvvetini taşır.
+3. **I:** cobalt index omurgası; numara, metadata ve ilerleme ritmini sabitler.
+4. **R:** stem, bowl ve leg; proje maskesinin kenarı ve exit işaretidir.
 
-Bu parçalar başlangıçta tek bir monogram olarak okunur. Scroll ile açıldığında parçalar serbest cisimler gibi dağılmaz; 12 kolonlu grid çizgilerine kilitlenir. Böylece “parçalanma” bir fizik gösterisi değil, içeriğin yapısal olarak açılmasıdır.
+Başlangıçta kelime açıkça EMIR olarak okunur. Scroll ile açıldığında parçalar serbest cisimler gibi dağılmaz; grid çizgilerine ve proje görselinin sınırlarına bağlanır. “Parçalanma” fizik gösterisi değil, içeriğin yapısal olarak açılmasıdır.
 
 ### Durum makinesi
 
 | Durum | Kullanıcı anlamı | Artefakt davranışı |
 | --- | --- | --- |
-| `assembled` | Giriş / yön bulma | Modüller tek monogram, ön yüz düz, metin görünür |
-| `calibrating` | Scroll başladı | Modüller 1–2 kolon ayrılır, aktif folyo yükselir |
-| `framing` | Proje odakta | Dış parçalar görsel crop maskesi, omurga metadata rayı olur |
-| `open` | Proje / süreç açıklaması | Negatif kanallar büyür, HTML açıklama alanı açılır |
-| `transition` | Bir sonraki işe geçiş | Modüller mevcut projeyi kapatıp sonraki grid’e oturur |
-| `reassembled` | İletişim / döngü | E/M yeniden birleşir ve iletişim bağlantısının odak noktası olur |
+| `assembled` | Giriş / yön bulma | EMIR tek wordmark, başlık ve kimlik bilgisi birlikte görünür. |
+| `separating` | Yapının açılması | E rail’leri ayrılır, M yön değiştirir, I ve R yeni akslarını arar. |
+| `framing` | Proje odakta | EMIR geometrisi geçici DEVFLOW görselini crop’layan bir frame’e dönüşür. |
+| `rail` | Proje / süreç açıklaması | I metadata rail’i olarak okunur; numara, başlık ve link görünür kalır. |
+| `exit` | Bir sonraki işe geçiş | R kenarı ve yön çizgisi sahneyi ileri taşır; frame temiz bir kapanışa çözülür. |
 
-Bir state değişimi yalnızca `progress` aralığında gerçekleşmeli; pointer tek başına proje değiştirmemeli.
+Bir state değişimi yalnızca scroll `progress` aralığında gerçekleşir; pointer tek başına proje değiştirmez. Reverse scroll aynı yolları tersine izler.
 
 ## Görsel dil
 
 ### Yüzey ve renk
 
-- Ana yüzey: `#FFFFFF` veya çok hafif nötr `#F7F7F8`.
-- Metin: `#111111`.
-- Tek vurgu: Yves Klein Blue yönünde `#002FA7`.
-- Grid ve ayraçlar: `#D6D6D6` seviyesinde 1 px çizgiler.
-- Artefakt aktif modülü: aynı kobalt; gölge, gradient ve glow yok.
-
-Kobalt, “marka rengi” olarak her yerde kullanılmayacak. Aktif proje, focus ring, geçiş maskesi ve tek bir çağrı için ayrılacak. İkinci bir vurgu rengi eklenmeyecek.
+- Ana yüzey: `#F5F5F2` gibi sıcak, hafif nötr bir yüzey.
+- Metin: `#101010` near-black.
+- Tek vurgu: cobalt `#002FA7`.
+- Grid ve ayraçlar: düşük kontrastlı 1 px çizgiler.
+- Aktif vurgu: kobalt yalnızca I omurgası, sinyal çizgisi, focus ve geçiş işaretlerinde kullanılır; büyük rastgele dolgu yoktur.
 
 ### Tipografi
 
 Tek sans ailesi kullanılacak: tercihen Söhne veya Helvetica Neue; web lisansı ve performans uygun değilse sistem fallback’i `Arial, sans-serif`. Display ve gövde aynı ailenin ağırlık/genişlik farklarıyla kurulacak.
 
-- Hero display: viewport’a göre yaklaşık `clamp(4rem, 13vw, 12rem)`; sıkı tracking.
+- Hero display: viewport’a göre büyük, sıkı tracking’li cümle ölçeği.
 - Section başlıkları: 4–8vw; cümle kırımları asimetrik.
-- Metadata: 11–13 px, tabular numerals, küçük harf veya cümle düzeni; dekoratif mono-kapsül değil.
-- Folyolar: `01 / 06`, `WORK`, `CONTACT` gibi gerçek navigasyon bilgileri.
+- Metadata: 11–13 px, tabular numerals, dekoratif mono-kapsül olmadan.
+- Folyolar: `01 / 05`, `WORK / SYSTEMS`, `FORWARD / PROJECT 02` gibi gerçek navigasyon bilgileri.
 
-Kullanıcının gerçek proje adı, yılı, rolü ve bağlantısı yoksa doküman/arayüz veri sözleşmesi bunları boş bırakmalı; sahte müşteri veya sonuç üretilmemeli.
+Gerçek proje adı, yılı, rolü ve bağlantısı yoksa veri sözleşmesi bunları boş bırakmalı; sahte müşteri veya sonuç üretilmemeli.
 
 ### Layout felsefesi
 
-Masaüstünde 12 kolon, 1 px dikey grid çizgileri ve geniş kenar boşlukları. Hero başlığı sol/orta arasında; E/M çoğunlukla grid dışında taşarak sabit bir görsel mihenk taşı olur. Proje açıklaması sağ kolonlarda, görsel solda veya tersinde kullanılarak ritim değişir.
+Masaüstünde 12 kolon, 1 px dikey grid çizgileri ve geniş kenar boşlukları kullanılır. Hero başlığı sol bölgede nefes alır; EMIR geniş bir yatay kütle olarak merkezi alanı tutar. Scroll ilerleyince aynı kütle sağdaki proje frame’i ve dikey metadata rail’i ile yeni bir asimetri kurar.
 
 Her bölüm şu üç katmandan en az ikisini içerir:
 
 1. **sabit bilgi:** folyo, bölüm adı, ilerleme;
 2. **değişen içerik:** proje görseli, açıklama, rol/yıl;
-3. **artefakt mekaniği:** E/M’nin o bölümün state’ine dönüşen modülleri.
+3. **artefakt mekaniği:** EMIR’in o bölümün state’ine dönüşen parçaları.
 
-Boşluk, animasyon kadar önemlidir. Büyük bir geçişten sonra en az bir viewport yüksekliğinde görsel sessizlik planlanmalı.
+Boşluk, animasyon kadar önemlidir. Büyük bir geçişten sonra kompozisyonun nefes alacağı alan bırakılır; ancak pin süresi gereksiz yere uzatılmaz.
 
 ## Etkileşim felsefesi
 
-1. Scroll, sayfanın ana zaman çizgisidir.
-2. Pointer, zamanı ilerletmez; yalnızca aktif sahneye bakış ve temas hissi verir.
+1. Scroll sayfanın ana zaman çizgisidir.
+2. Pointer zamanı ilerletmez; yalnızca aktif sahneye bakış ve temas hissi verir.
 3. Hover, nesnenin görevini açıklar; rastgele deformasyon yapmaz.
 4. Click, bir projeyi açar veya iletişim kurar; önemli içerik yalnızca hover arkasına saklanmaz.
-5. Her karmaşık hareketin anlık statik karşılığı vardır: E/M, proje adı ve açıklama animasyon yokken de okunur.
+5. Her karmaşık hareketin anlık statik karşılığı vardır: EMIR, proje adı ve açıklama animasyon yokken de okunur.
 
 ## Motion grammar
 
@@ -90,105 +87,93 @@ Boşluk, animasyon kadar önemlidir. Büyük bir geçişten sonra en az bir view
 - Kısa UI tepkisi: 180–260 ms, hızlı cubic-bezier.
 - Tipografi ve parça kayması: 450–700 ms, yumuşak ease-out.
 - Proje geçişi: 700–1000 ms; input kilidi yalnızca geçiş boyunca.
-- Uzun scroll scrub: doğrudan `progress` ile lineer; görsel gecikme için en fazla küçük bir low-pass smoothing.
-- Fizik hissi gereken tek yer: modülün grid’e oturuşu; spring overshoot çok küçük, zıplama yok.
+- Uzun scroll scrub: doğrudan `progress` ile lineer; görsel gecikme için küçük low-pass smoothing.
+- Kontrollü perspektif: yalnızca proje görselinde ve düşük derece aralığında.
 
 ### Giriş
 
-Gerçek asset hazırlığı bitince E/M modülleri dıştan içe değil, grid çizgileri boyunca kısa mesafelerden yerlerine oturur. Başlık önce okunur, hareket sonra anlamı pekiştirir. Uzun logo animasyonu veya sahte yüzde göstergesi kullanılmaz.
+EMIR önce okunur, hareket sonra anlamı pekiştirir. Wordmark dıştan içe uçuşan parçalardan değil, yerinde duran modüler çizgilerden oluşur. Uzun logo animasyonu veya sahte yüzde göstergesi kullanılmaz.
 
 ### Scroll-linked hareket
 
-Scroll progress şu sırayla okunur: `0–0.25` E/M açısı ve folyo, `0.25–0.65` modül ayrılması ve metin/medya maskesi, `0.65–0.9` proje içeriği, `0.9–1` transition hazırlığı. Kullanıcı hızlı kaydırdığında state atlanabilir ama proje içeriği kaybolmamalı; snap veya “nearest state” mantığı gerekir.
+Scroll progress şu sırayla okunur: `0–0.22` assembled kimlik, `0.22–0.52` decomposition, `0.52–0.73` proje frame’i, `0.73–0.90` metadata rail’i, `0.90–1` exit hazırlığı. Kullanıcı hızlı kaydırdığında ara görsel kısalabilir; proje içeriği kaybolmamalıdır. Snap veya scroll hijacking kullanılmaz.
 
 ### Pinned sequence
 
-Yalnızca hero ve proje sequence pinned olacak. Hero’da E/M görünürken içerik katmanı onun etrafından geçer. Proje sequence’te tek bir büyük medya çerçevesi sabit kalır, metadata ve E/M parçaları proje değiştikçe güncellenir. Her proje için bağımsız uzun bir pin yerine aynı sahne yeniden kullanılır.
+Desktop’ta tek bir scene pinlenir; `390vh` sequence yüksekliği dört okunabilir state için pacing sağlar. Hero’da EMIR ve başlık birlikte yaşar. Proje frame’i büyük detached bir kobalt kart olarak belirmez; EMIR geometrisinin kurulmuş sınırlarından açılır, I rail’i de aynı sistemin metadata yüzü olur.
 
 ### Proje geçişleri
 
-Geçiş formülü: mevcut görsel crop daralır → E/M omurgası dikey ayraç olur → sonraki görsel aynı maskeden açılır → başlık ve metadata değişir. Bu, Lusion’daki seri hissini alır; ancak proje görselleri aynı görsel efektle boğulmaz.
+Geçiş formülü: assembled EMIR → yönlenen rail’ler → aynı geometriden açılan proje crop’u → I metadata rail’i → R/çizgi ile sonraki projeye yön. İçerik DOM’da kalır; frame yalnızca işlevsel bir maske ve odaklayıcı katmandır.
 
-### Cursor tepkisi
+### Pointer tepkisi
 
-Masaüstünde küçük kare/crosshair cursor yalnızca etkileşimli bölgelerde görünür. E/M üzerine gelince modüller imlece doğru en fazla 2–4 px / 2° yönelir; proje görselinde crop maskesi 1–2% oynar. Sürekli trail, parçacık, ışık izi ve tüm sayfayı takip eden büyük bir daire kullanılmaz.
+EMIR üzerine gelince wordmark en fazla düşük genlikli x/y parallax ve 1.6° rotasyon alır; proje görseli 1–1.4° aralığında kontrollü perspective tilt ile derinleşir. Inertia dönüşü vardır fakat nesne imleci takip etmez. Sürekli trail, parçacık, ışık izi ve tüm sayfayı takip eden büyük bir daire kullanılmaz.
 
 ### Hover ve focus
 
-CTA ve proje linklerinde aynı dil kullanılır: kobalt bir dolgu yüzeyi alttan veya soldan genişler, metin 4–8 px kayar, küçük ok/işaret görünür. Focus-visible durumunda aynı affordance outline ve metin konumuyla klavyede de görülür. Hover, içeriği değiştirmez; yalnızca tıklanabilirliği anlatır.
+CTA ve proje linklerinde aynı dil kullanılır: ince kobalt veya near-black çizgi, küçük ok hareketi ve görünür focus ring. Hover içeriği değiştirmez; yalnızca tıklanabilirliği anlatır.
 
 ### Görsel / video reveal
 
-Görsel maskesi E/M dış modüllerinden kurulabilir, fakat içerik DOM/img olarak kalır. Video yalnızca gerçek reel veya proje içeriği varsa kullanılacak; otomatik ses yok. Poster görseli, lazy-load, `playsInline`, `muted` ve `prefers-reduced-motion` durumu baştan tanımlanacak.
+Görsel maskesi EMIR’in dış modüllerinden kurulabilir, fakat içerik DOM/img olarak kalır. Video yalnızca gerçek reel veya proje içeriği varsa kullanılacak; otomatik ses yok. Poster, lazy-load, `playsInline`, `muted` ve reduced-motion durumu baştan tanımlanacak.
 
 ### Tipografi hareketi
 
-Başlık karakterleri bağımsız uçuşmayacak. En fazla satır veya kelime blokları 8–16 px yatay/dikey yer değiştirir; opacity değişimi yalnızca okunurluğu destekler. Aynı başlık birden fazla yerde farklı easing ile oynatılmayacak.
+Başlık karakterleri bağımsız uçuşmayacak. En fazla satır veya kelime blokları 8–16 px yer değiştirir; opacity yalnızca okunurluğu destekler. Aynı başlık birden fazla yerde farklı easing ile oynatılmaz.
 
 ### Navigasyon ve sayfa geçişi
 
-Header minimal ve sabit: E/M monogramı, `Work`, `About`, `Contact`. Menü açıldığında grid çizgileri belirginleşir ve E/M, menü durumunu gösterecek kadar açılır. Route transition yalnızca içerik bağlamı değiştiğinde çalışır; back/forward ve deep-link doğrudan içerik state’ine ulaşır.
+Header minimal ve sabit: EMIR wordmark’ı, work/about/contact bağlantıları ve mevcut prototipteki sequence marker. Route transition yalnızca içerik bağlamı değiştiğinde çalışır; back/forward ve deep-link doğrudan içerik state’ine ulaşır.
 
 ### Reduced motion
 
 `prefers-reduced-motion: reduce` durumunda:
 
-- pin süreleri kaldırılır veya en fazla kısa fade/crossfade’e iner;
-- E/M parçaları final state’e anında yerleşir;
-- pointer parallax kapatılır;
-- video autoplay durur, poster ve play kontrolü kalır;
-- scroll progress yerine açık `Previous / Next` ve anchor linkleri görünür;
-- menü opacity/fade ile açılır, transform sequence yoktur.
+- pin süresi ve uzun cinematic sequence kaldırılır;
+- EMIR okunabilir static frame durumuna anında yerleşir;
+- pointer parallax ve transition’lar kapanır;
+- proje içeriği, metadata ve anchor navigasyonu normal belge akışında kalır;
+- menü opacity/fade ile açılır, transform sequence kullanılmaz.
 
 ## 3D / WebGL rolü ve teknoloji kararı
 
 | Etki | Önerilen teknoloji | Neden |
 | --- | --- | --- |
-| E/M geometrisi, grid ve maskeler | HTML/CSS + inline SVG | Keskin, erişilebilir, kolay responsive ve düşük maliyetli |
-| Scroll pin / progress orchestration | GSAP + ScrollTrigger **veya** küçük bir native IntersectionObserver state katmanı | Tek bir pinned hero ve project sequence için yeterli; her yere GSAP yayılmamalı |
-| Smooth scroll | Önce native scroll; yalnızca pointer/pin senkronu zorunluysa Lenis | Body’yi `overflow:hidden` yapmanın erişilebilirlik ve input riskini azaltmak |
-| Uygulama kabuğu | React | Proje state’i, route, data contract ve fallback’leri net ayırmak için |
-| Pointer depth | CSS transform veya SVG `transform` | E/M’nin 2–4° tepkisi için WebGL gereksiz |
-| Opsiyonel derinlik | Three.js / React Three Fiber, düşük çözünürlüklü tek sahne | Sadece düz SVG ile anlamlı olmayan occlusion/parallax kanıtlanırsa |
-| Shader | GLSL yalnızca maskenin görsel olarak başka türlü üretilemediği durumda | Prestige için değil, belirli bir kompozisyon ihtiyacı için |
-| Reel / proje videosu | HTML `<video>` veya Vimeo embed | Gerçek medya varsa; poster ve reduced-motion fallback ile |
-| Geçiş animasyonu | SVG / CSS; Rive ancak ayrı bir state asset’i gerçekten gerekiyorsa | Rive, her route için varsayılan bağımlılık olmayacak |
+| EMIR geometrisi, grid ve maskeler | HTML/CSS + inline SVG | Keskin, erişilebilir, responsive ve düşük maliyetli |
+| Scroll pin / progress | GSAP + ScrollTrigger | Tek pinned scene için açık sahiplik ve doğrudan scrub |
+| Smooth scroll | Önce native scroll; yalnızca kanıtlanmış ihtiyaç varsa Lenis | Body kilitleme ve input riskini azaltmak |
+| Pointer depth | CSS transform veya SVG transform | EMIR’in düşük dereceli tepkisi için WebGL gereksiz |
+| Opsiyonel derinlik | Three.js / React Three Fiber | Sadece düz SVG ile anlamlı olmayan occlusion kanıtlanırsa |
+| Shader | GLSL | Yalnızca maskenin başka türlü üretilemediği belirli bir ihtiyaç varsa |
 
 ### WebGL eşik kararı
 
-İlk sürüm E/M’yi SVG/CSS ile tamamlamalı. WebGL ancak şu iki ihtiyaçtan biri kanıtlanırsa eklenebilir:
-
-1. parçaların birbirinin önünde/arkasında gerçek occlusion ile hareket etmesi zorunluysa;
-2. pointer ile 2.5D yüzeyin düşük maliyetli üretimi SVG’de kabul edilemezse.
-
-WebGL eklenirse tek canvas, sabit düşük DPR, asset instancing, görünür bölüm dışında pause ve `webglcontextlost` fallback’i zorunludur. Mobilde 2D/flat sürüm varsayılan kabul edilir.
+İlk sürüm EMIR’i SVG/CSS ile tamamlamalı. WebGL ancak parçaların gerçek occlusion ile hareket etmesi veya SVG’de kabul edilemeyecek ölçekte canlı deformasyon zorunluysa eklenebilir. Mobilde 2D/flat sürüm varsayılan kalır.
 
 ## Responsive felsefesi
 
 - **Masaüstü:** 12 kolon, pinned hero ve tek aktif proje sahnesi.
-- **Tablet:** 8 kolon, daha kısa pin, E/M parçaları daha küçük ve metadata alt sıraya iner.
-- **Mobil:** 4 kolon, uzun pinned sekans yerine üç-dört snap state; E/M 2D SVG, medya üstte, açıklama altta. Pointer etkisi kaldırılır; dokunma ile `Previous / Next` veya açık state kontrolü gelir.
-- **Dar yükseklik:** hero başlığı ve artefakt üst üste binmez; E/M hero içinde sabit oranlı kutuda kalır.
-- **Touch:** hover affordance içerikleri gizlemez, yalnızca basılı/odaklı state’e dönüşür.
+- **Tablet:** daha sıkı grid, daha kısa algılanan pacing ve metadata rail’i için daha fazla yatay nefes.
+- **Mobil:** uzun pinned sequence yok; EMIR, proje görseli ve metadata normal belge akışında tek kolona geçer. Pointer etkisi kaldırılır.
+- **Dar yükseklik:** hero başlığı ve wordmark üst üste binmez; EMIR sabit oranlı SVG alanında kalır.
+- **Touch:** hover affordance içerikleri gizlemez; link ve frame klavye/touch ile erişilebilir kalır.
 
 ## Erişilebilirlik ve içerik sözleşmesi
 
 - Her bölüm gerçek HTML heading hiyerarşisi ve landmark ile kurulacak.
-- Canvas/SVG yalnızca destekleyici görsel; proje adı, rol, yıl, açıklama ve bağlantı DOM’da bulunacak.
+- SVG destekleyici görsel; proje adı, rol, açıklama ve bağlantı DOM’da bulunacak.
 - `aria-live` yalnızca state değişimi kullanıcıya anlamlı bilgi veriyorsa kullanılacak; her scroll frame’i duyurulmayacak.
-- Klavye kullanıcıları artefaktı `Previous`, `Next`, `Open project`, `Contact` ile kontrol edebilecek.
-- Focus ring yalnızca kobalt ve en az 3:1 kontrastlı görünür bir kalınlıkta olacak.
-- Görseller gerçek alt metin alacak; dekoratif E/M SVG’si `aria-hidden="true"` olabilir.
+- Klavye kullanıcıları skip link ve proje anchor’ı ile motion sequence’ı geçebilecek.
+- Focus ring kobalt veya near-black ve görünür kontrastta olacak.
+- EMIR SVG’si anlamlı wordmark olarak etiketlenebilir; dekoratif varyantlar `aria-hidden="true"` olabilir.
 - Harici font başarısız olduğunda layout okunabilir kalacak.
-- Gerçek proje verisi yoksa kartta sahte isim, ödül, metrik, müşteri veya tarih gösterilmeyecek.
 
 ## Performans bütçesi ve riskler
 
 - İlk anlamlı HTML içerik: 1 s içinde görünür.
-- Hero poster: 300 KB civarı hedef; gerçek proje medya lazy-load.
-- İlk etkileşimden önce en fazla bir aktif renderer.
-- Scroll sırasında layout thrash yok; yalnızca `transform` ve `opacity` animasyonu.
-- Asset decode ve font yükü preloader’dan ayrılacak.
+- Prototipte ağır asset, canvas veya sürekli render loop yok.
+- Scroll sırasında layout thrash yok; transform, opacity ve sınırlı clip-path kullanılır.
+- SVG ve ileride eklenecek proje medya decode maliyeti ölçülmeden büyütülmez.
 
-**En büyük teknik risk:** Smooth/pinned scroll, tek canvas ve proje medya geçişleri aynı anda kontrol edilirse düşük güçlü mobil cihazlarda input gecikmesi ve state senkron kaybı oluşabilir. Bu yüzden native scroll + SVG E/M temelidir; WebGL ve Lenis opsiyoneldir, her ikisi de performans ölçümü olmadan kabul edilmez.
-
+**Ana risk:** pinned ScrollTrigger, ilerideki proje medya geçişleri ve smooth scroll aynı anda kontrol edilirse düşük güçlü cihazlarda input gecikmesi oluşabilir. Bu yüzden native scroll + SVG/DOM temelidir; Lenis ve WebGL performans ölçümü olmadan kabul edilmez.

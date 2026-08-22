@@ -1,0 +1,572 @@
+.playgroundSequence {
+  --playground-ink: #101010;
+  --playground-paper: #e7e8e3;
+  --playground-signal: #002fa7;
+  position: relative;
+  overflow: clip;
+  background: var(--playground-paper);
+  color: var(--playground-ink);
+}
+
+.playgroundTransition,
+.playgroundIntro,
+.fieldSurface,
+.experimentIndexBlock,
+.penaltyExperiment,
+.playgroundExit {
+  width: min(100% - 48px, 1480px);
+  margin-inline: auto;
+}
+
+.playgroundTransition {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0 20px;
+  border-top: 1px solid rgba(16, 16, 16, 0.68);
+  border-bottom: 1px solid rgba(16, 16, 16, 0.2);
+  color: rgba(16, 16, 16, 0.62);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.playgroundIntro {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 2fr) minmax(180px, 0.8fr);
+  gap: clamp(20px, 4vw, 72px);
+  align-items: end;
+  padding: clamp(70px, 10vw, 150px) 0 clamp(44px, 7vw, 92px);
+}
+
+.playgroundIndex,
+.playgroundInstruction,
+.sectionLead,
+.penaltyEyebrow,
+.penaltyRule,
+.contextLabel,
+.penaltyFacts,
+.fieldAxisLabel,
+.fieldFooter,
+.exitEyebrow,
+.exitNote {
+  display: grid;
+  gap: 8px;
+  color: rgba(16, 16, 16, 0.62);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.playgroundIndex strong {
+  color: var(--playground-signal);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.playgroundTitleBlock {
+  position: relative;
+}
+
+.playgroundTitleBlock::before {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: min(16vw, 220px);
+  height: 1px;
+  background: var(--playground-signal);
+  content: "";
+}
+
+.playgroundTitleBlock h2 {
+  margin: 0;
+  font-size: clamp(4.6rem, 9vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.76;
+  white-space: nowrap;
+}
+
+.playgroundTitleBlock p {
+  max-width: 420px;
+  margin: clamp(28px, 4vw, 54px) 0 0;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.42;
+}
+
+.playgroundInstruction {
+  justify-self: end;
+  align-self: end;
+  border-left: 1px solid var(--playground-signal);
+  padding-left: 14px;
+}
+
+.playgroundInstruction span:last-child {
+  color: var(--playground-signal);
+}
+
+.fieldSurface {
+  position: relative;
+  height: clamp(430px, 56vw, 760px);
+  border-top: 1px solid rgba(16, 16, 16, 0.68);
+  border-bottom: 1px solid rgba(16, 16, 16, 0.68);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.fieldCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fieldAccessibleNote {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fieldAxisLabel,
+.fieldFooter {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 12px;
+  pointer-events: none;
+}
+
+.fieldAxisLabel {
+  top: 14px;
+}
+
+.fieldFooter {
+  bottom: 14px;
+}
+
+.fieldAxisLabel span:last-child,
+.fieldFooter span:last-child {
+  color: var(--playground-signal);
+}
+
+.experimentIndexBlock {
+  padding: clamp(70px, 10vw, 140px) 0 clamp(46px, 6vw, 86px);
+}
+
+.sectionLead {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16, 16, 16, 0.35);
+  padding-bottom: 14px;
+}
+
+.sectionLead span:last-child {
+  color: var(--playground-signal);
+}
+
+.experimentIndex {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experimentIndex li {
+  display: grid;
+  grid-template-columns: 0.8fr 2fr 0.8fr;
+  gap: 18px;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(16, 16, 16, 0.22);
+  padding: 20px 0;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.experimentIndex li span,
+.experimentIndex li em {
+  color: rgba(16, 16, 16, 0.6);
+  font-size: 0.64rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.experimentIndex li strong {
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  letter-spacing: -0.04em;
+}
+
+.experimentIndex li em {
+  justify-self: end;
+  color: var(--playground-signal);
+}
+
+.penaltyExperiment {
+  border-top: 1px solid rgba(16, 16, 16, 0.68);
+  border-bottom: 1px solid rgba(16, 16, 16, 0.68);
+  padding: clamp(30px, 4vw, 62px) 0 clamp(80px, 10vw, 150px);
+}
+
+.penaltyHeader {
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 0.7fr;
+  gap: 24px;
+  align-items: end;
+}
+
+.penaltyIndex {
+  color: var(--playground-signal);
+  font-size: clamp(1rem, 1.6vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.penaltyEyebrow {
+  margin: 0 0 14px;
+}
+
+.penaltyHeader h3 {
+  margin: 0;
+  font-size: clamp(4.8rem, 11vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.1em;
+  line-height: 0.72;
+}
+
+.penaltyRule {
+  justify-self: end;
+  border-left: 1px solid var(--playground-signal);
+  padding-left: 14px;
+}
+
+.penaltyMediaStage {
+  position: relative;
+  min-height: clamp(500px, 52vw, 720px);
+  margin-top: clamp(54px, 8vw, 120px);
+}
+
+.penaltyPrimaryMedia,
+.penaltySecondaryMedia {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(16, 16, 16, 0.7);
+  background: #101010;
+}
+
+.penaltyPrimaryMedia {
+  top: 0;
+  left: 6%;
+  width: min(72%, 970px);
+  aspect-ratio: 16 / 10;
+}
+
+.penaltySecondaryMedia {
+  right: 4%;
+  bottom: 0;
+  width: min(38%, 510px);
+  aspect-ratio: 16 / 10;
+  box-shadow: -18px 18px 0 var(--playground-paper), -19px 19px 0 var(--playground-ink);
+}
+
+.penaltyPrimaryMedia img,
+.penaltySecondaryMedia img {
+  object-fit: cover;
+}
+
+.penaltyPrimaryMedia img {
+  object-position: center center;
+}
+
+.penaltySecondaryMedia img {
+  object-position: center center;
+}
+
+.penaltyPrimaryMedia figcaption,
+.penaltySecondaryMedia figcaption {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  z-index: 2;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+.penaltyContext {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: clamp(30px, 10vw, 160px);
+  margin: clamp(48px, 8vw, 110px) 6% 0;
+}
+
+.penaltyContext > div:first-child {
+  max-width: 610px;
+}
+
+.contextLabel {
+  margin: 0 0 18px;
+  color: var(--playground-signal);
+}
+
+.penaltyContext p:not(.contextLabel) {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.penaltyFacts {
+  align-self: end;
+  border-left: 1px solid var(--playground-signal);
+  padding-left: 16px;
+}
+
+.penaltyFacts strong {
+  color: var(--playground-ink);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.penaltyFacts span:last-child {
+  margin-top: 10px;
+  color: var(--playground-ink);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+}
+
+.playgroundExit {
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 0.7fr;
+  gap: 24px;
+  align-items: end;
+  min-height: clamp(380px, 52vw, 700px);
+  padding: clamp(60px, 10vw, 150px) 0;
+}
+
+.exitAxis {
+  align-self: start;
+  color: var(--playground-signal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.exitEyebrow {
+  margin: 0 0 18px;
+}
+
+.playgroundExit h3 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(3.4rem, 8vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.84;
+}
+
+.exitNote {
+  justify-self: end;
+  align-self: end;
+  border-left: 1px solid var(--playground-signal);
+  padding-left: 14px;
+}
+
+@media (max-width: 899px) {
+  .playgroundIntro {
+    grid-template-columns: 0.6fr 1.8fr;
+  }
+
+  .playgroundInstruction {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .penaltyHeader,
+  .playgroundExit {
+    grid-template-columns: 0.6fr 1.8fr;
+  }
+
+  .penaltyRule,
+  .exitNote {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .penaltyContext {
+    grid-template-columns: 1fr;
+  }
+
+  .penaltyFacts {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .playgroundTransition,
+  .playgroundIntro,
+  .fieldSurface,
+  .experimentIndexBlock,
+  .penaltyExperiment,
+  .playgroundExit {
+    width: calc(100% - 28px);
+  }
+
+  .playgroundTransition {
+    padding: 16px 0 14px;
+    font-size: 0.56rem;
+  }
+
+  .playgroundIntro {
+    display: block;
+    padding: 72px 0 46px;
+  }
+
+  .playgroundIndex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  .playgroundTitleBlock::before {
+    top: -16px;
+    width: 90px;
+  }
+
+  .playgroundTitleBlock h2 {
+    overflow-wrap: anywhere;
+    font-size: clamp(3.8rem, 18vw, 7.5rem);
+    line-height: 0.78;
+    white-space: normal;
+  }
+
+  .playgroundTitleBlock p {
+    margin-top: 28px;
+    font-size: 1rem;
+  }
+
+  .playgroundInstruction {
+    margin-top: 40px;
+  }
+
+  .fieldSurface {
+    height: min(56vh, 470px);
+    min-height: 330px;
+  }
+
+  .fieldAxisLabel,
+  .fieldFooter {
+    display: grid;
+    gap: 4px;
+    padding-inline: 8px;
+    font-size: 0.52rem;
+  }
+
+  .fieldAxisLabel span:last-child,
+  .fieldFooter span:last-child {
+    justify-self: end;
+  }
+
+  .experimentIndexBlock {
+    padding: 70px 0 48px;
+  }
+
+  .experimentIndex li {
+    grid-template-columns: 0.7fr 1.5fr;
+    gap: 8px 12px;
+    padding: 18px 0;
+  }
+
+  .experimentIndex li em {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .penaltyExperiment {
+    padding: 28px 0 76px;
+  }
+
+  .penaltyHeader,
+  .playgroundExit {
+    display: block;
+  }
+
+  .penaltyIndex {
+    display: block;
+    margin-bottom: 34px;
+  }
+
+  .penaltyHeader h3 {
+    font-size: clamp(4.3rem, 22vw, 7rem);
+  }
+
+  .penaltyRule {
+    display: inline-block;
+    margin-top: 28px;
+  }
+
+  .penaltyMediaStage {
+    min-height: 0;
+    margin-top: 46px;
+  }
+
+  .penaltyPrimaryMedia,
+  .penaltySecondaryMedia {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .penaltySecondaryMedia {
+    width: 88%;
+    margin: 28px 0 0 auto;
+    box-shadow: -10px 10px 0 var(--playground-paper), -11px 11px 0 var(--playground-ink);
+  }
+
+  .penaltyContext {
+    margin: 42px 0 0;
+  }
+
+  .penaltyContext p:not(.contextLabel) {
+    font-size: 1.1rem;
+  }
+
+  .playgroundExit {
+    min-height: 440px;
+    padding: 72px 0 100px;
+  }
+
+  .exitAxis {
+    display: block;
+    margin-bottom: 72px;
+  }
+
+  .playgroundExit h3 {
+    font-size: clamp(3.1rem, 16vw, 5.5rem);
+  }
+
+  .exitNote {
+    display: inline-block;
+    margin-top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldSurface {
+    cursor: default;
+  }
+}

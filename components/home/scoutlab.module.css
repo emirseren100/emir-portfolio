@@ -1,0 +1,766 @@
+.scoutSequence {
+  --scout-progress: 0;
+  --scout-exit: 0;
+  position: relative;
+  min-height: 320vh;
+  overflow: clip;
+  border-top: 1px solid #111111;
+  background: #e8e9e4;
+  color: #101010;
+}
+
+.scoutScene {
+  position: relative;
+  height: 100vh;
+  min-height: 44rem;
+  overflow: hidden;
+  isolation: isolate;
+  background: #e8e9e4;
+}
+
+.scoutGrid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: calc(0.3 - var(--scout-progress) * 0.14);
+  background-image:
+    linear-gradient(to right, rgba(16, 16, 16, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 16, 16, 0.15) 1px, transparent 1px);
+  background-size: 8.3333% 100%, 100% 16.6667%;
+  pointer-events: none;
+}
+
+.scoutBackplane {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  transform: translate3d(calc(var(--scout-progress) * -20vw), 0, 0);
+  pointer-events: none;
+}
+
+.backplaneIndex {
+  position: absolute;
+  top: 18.5vh;
+  left: 3vw;
+  color: rgba(16, 16, 16, 0.52);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.backplaneWord {
+  position: absolute;
+  top: 24vh;
+  left: 7vw;
+  color: rgba(16, 16, 16, 0.065);
+  font-size: clamp(11rem, 25vw, 31rem);
+  font-weight: 700;
+  letter-spacing: -0.12em;
+  line-height: 0.75;
+  white-space: nowrap;
+}
+
+.scoutTopline {
+  position: absolute;
+  z-index: 5;
+  top: 7.5rem;
+  right: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #101010;
+  padding-top: 0.62rem;
+  color: rgba(16, 16, 16, 0.68);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scoutIntro {
+  position: absolute;
+  z-index: 3;
+  top: 22vh;
+  left: 54vw;
+  width: min(21rem, 24vw);
+  color: rgba(16, 16, 16, 0.68);
+  font-size: 0.83rem;
+  line-height: 1.4;
+  opacity: clamp(0, calc(1 - var(--scout-progress) * 1.2), 1);
+  transform: translate3d(calc(var(--scout-progress) * -3vw), 0, 0);
+  transition: opacity 180ms linear;
+}
+
+.scoutIntro p:last-child {
+  margin-top: 1.4rem;
+}
+
+.scoutEyebrow,
+.workspaceLabel,
+.workspaceIndex,
+.panelStatus,
+.detailIndex,
+.techLabel,
+.scoutExit,
+.scoutScreenReaderStatus {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.scoutEyebrow {
+  color: #002fa7;
+}
+
+.scoutAxis {
+  position: absolute;
+  z-index: 1;
+  top: 57%;
+  left: -5vw;
+  display: grid;
+  gap: 2.3rem;
+  width: 150vw;
+  transform: translate3d(calc(var(--scout-progress) * -16vw), 0, 0);
+  pointer-events: none;
+}
+
+.scoutAxis span {
+  display: block;
+  border-top: 1px solid rgba(0, 47, 167, 0.46);
+}
+
+.scoutViewport {
+  position: absolute;
+  z-index: 2;
+  inset: 20vh 0 8vh;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.scoutCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 235vw;
+  height: 100%;
+  transform: translate3d(calc(var(--scout-progress) * -150vw), 0, 0);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.workspaceLead {
+  position: absolute;
+  top: 3vh;
+  left: 5vw;
+  display: grid;
+  gap: 0.55rem;
+  width: 33rem;
+}
+
+.workspaceIndex {
+  color: #002fa7;
+  font-size: 1rem;
+}
+
+.workspaceLead h2 {
+  margin: 0;
+  font-size: clamp(4.7rem, 10vw, 10rem);
+  font-weight: 700;
+  letter-spacing: -0.12em;
+  line-height: 0.78;
+  white-space: nowrap;
+}
+
+.workspaceLabel {
+  color: rgba(16, 16, 16, 0.56);
+}
+
+.scoutMediaPanel {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #111111;
+  background: #f7f7f4;
+  box-shadow: 1.25rem 1.25rem 0 rgba(16, 16, 16, 0.08);
+  transform-style: preserve-3d;
+}
+
+.scoutMediaPanel > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #070b0c;
+  object-fit: contain;
+  user-select: none;
+}
+
+.scoutMediaPrimary {
+  --scout-pointer-x: 0;
+  --scout-pointer-y: 0;
+  --scout-pointer-tilt-x: 0;
+  --scout-pointer-tilt-y: 0;
+  top: 16vh;
+  left: 30vw;
+  width: 49vw;
+  height: 54vh;
+  transform: translate3d(
+      calc(var(--scout-progress) * -3vw + var(--scout-pointer-x) * 1px),
+      calc(var(--scout-pointer-y) * 1px),
+      0
+    )
+    rotateX(calc(var(--scout-pointer-tilt-x) * 1deg)) rotateY(calc(var(--scout-pointer-tilt-y) * 1deg));
+  transition: box-shadow 240ms ease, border-color 240ms ease;
+  will-change: transform;
+}
+
+.scoutMediaPrimary > img {
+  object-position: center top;
+  transform: scale(1.012);
+  transition: transform 500ms ease;
+}
+
+.scoutMediaPrimary:hover,
+.scoutMediaPrimary:focus-within {
+  border-color: #002fa7;
+  box-shadow: 1.75rem 1.75rem 0 rgba(0, 47, 167, 0.13);
+}
+
+.scoutMediaPrimary:hover > img,
+.scoutMediaPrimary:focus-within > img {
+  transform: scale(1.035);
+}
+
+.scoutMediaSecondary {
+  top: 23vh;
+  left: 91vw;
+  width: 38vw;
+  height: 43vh;
+  transform: translate3d(calc(var(--scout-progress) * -7vw), 1.5rem, 0) rotate(-1.2deg);
+  opacity: calc(0.72 + var(--scout-progress) * 0.28);
+}
+
+.scoutMediaSecondary > img {
+  object-position: center top;
+  transform: scale(1.02);
+}
+
+.panelCorner {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  border-bottom: 1px solid #002fa7;
+  border-left: 1px solid #002fa7;
+  pointer-events: none;
+}
+
+.panelStatus {
+  position: absolute;
+  z-index: 3;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(247, 247, 244, 0.26);
+  background: rgba(16, 16, 16, 0.78);
+  padding: 0.35rem 0.45rem;
+  color: rgba(247, 247, 244, 0.82);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.scoutDetailRail {
+  position: absolute;
+  top: 7vh;
+  left: 145vw;
+  display: grid;
+  align-content: start;
+  gap: 1.1rem;
+  width: 18vw;
+  min-width: 15rem;
+  border-left: 2px solid #002fa7;
+  padding: 1rem 1rem 1.5rem;
+  background: rgba(232, 233, 228, 0.86);
+  transform: translate3d(calc(var(--scout-progress) * -2vw), 0, 0);
+}
+
+.detailIndex {
+  color: #002fa7;
+  font-size: 4rem;
+  letter-spacing: -0.1em;
+  line-height: 0.7;
+}
+
+.scoutDetailRail strong {
+  font-size: 1.1rem;
+  letter-spacing: -0.04em;
+}
+
+.scoutDetailRail > span:not(.detailIndex),
+.scoutDetailRail p {
+  color: rgba(16, 16, 16, 0.62);
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
+.scoutDetailRail p {
+  margin: 0;
+}
+
+.scoutAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #101010;
+  padding-bottom: 0.35rem;
+  color: #101010;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.scoutAction span:last-child {
+  color: #002fa7;
+  transition: transform 180ms ease;
+}
+
+.scoutAction:hover span:last-child,
+.scoutAction:focus-visible span:last-child {
+  transform: translate(2px, 2px);
+}
+
+.scoutTechRail {
+  position: absolute;
+  top: 19vh;
+  left: 177vw;
+  display: grid;
+  gap: 1rem;
+  width: 16vw;
+  min-width: 13rem;
+  border-top: 1px solid #101010;
+  padding-top: 0.8rem;
+  transform: translate3d(calc(var(--scout-progress) * -5vw), 0, 0);
+}
+
+.techLabel {
+  color: rgba(16, 16, 16, 0.58);
+}
+
+.scoutTechRail ul,
+.scoutMobileContext ul {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.scoutTechRail li,
+.scoutMobileContext li {
+  border-top: 1px solid rgba(16, 16, 16, 0.22);
+  padding-top: 0.42rem;
+  font-size: 0.8rem;
+}
+
+.scoutMobileContext {
+  display: none;
+}
+
+.scoutExit {
+  position: absolute;
+  z-index: 6;
+  right: 3vw;
+  bottom: 7vh;
+  display: grid;
+  gap: 0.5rem;
+  color: #101010;
+  opacity: calc(0.2 + var(--scout-exit) * 0.8);
+  text-align: right;
+  transform: translate3d(calc((1 - var(--scout-exit)) * 1.2rem), 0, 0);
+}
+
+.scoutExit span:first-child {
+  color: #002fa7;
+  font-size: 1.35rem;
+}
+
+.scoutScreenReaderStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1100px) {
+  .scoutTopline {
+    right: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .scoutIntro {
+    width: 18rem;
+  }
+
+  .workspaceLead h2 {
+    font-size: clamp(4.2rem, 11vw, 8rem);
+  }
+
+  .scoutMediaPrimary {
+    left: 33vw;
+    width: 54vw;
+  }
+
+  .scoutMediaSecondary {
+    left: 94vw;
+    width: 44vw;
+  }
+
+  .scoutDetailRail {
+    left: 151vw;
+  }
+
+  .scoutTechRail {
+    left: 182vw;
+  }
+}
+
+@media (max-width: 899px) {
+  .scoutSequence {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .scoutScene {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding: 1.2rem 1rem 4.5rem;
+  }
+
+  .scoutGrid {
+    opacity: 0.22;
+    background-size: 25% 100%, 100% 14rem;
+  }
+
+  .scoutBackplane {
+    position: absolute;
+    height: 25rem;
+    transform: none;
+  }
+
+  .backplaneIndex {
+    top: 5rem;
+    left: 1rem;
+  }
+
+  .backplaneWord {
+    top: 8rem;
+    left: 1rem;
+    font-size: 25vw;
+  }
+
+  .scoutTopline {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    min-height: 2.7rem;
+    padding-top: 0.55rem;
+  }
+
+  .scoutTopline span:last-child {
+    max-width: 9rem;
+    text-align: right;
+  }
+
+  .scoutIntro {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-top: 4rem;
+    font-size: 0.82rem;
+  }
+
+  .scoutIntro p:last-child {
+    max-width: 22rem;
+  }
+
+  .scoutAxis {
+    top: 24rem;
+    left: -1rem;
+    width: calc(100% + 2rem);
+    gap: 1.8rem;
+    transform: none;
+  }
+
+  .scoutViewport {
+    position: relative;
+    inset: auto;
+    margin-top: 5rem;
+    overflow: visible;
+    perspective: none;
+  }
+
+  .scoutCanvas {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .workspaceLead {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .workspaceLead h2 {
+    max-width: 100%;
+    font-size: clamp(3.5rem, 17vw, 6rem);
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .scoutMediaPanel,
+  .scoutMediaPrimary,
+  .scoutMediaSecondary {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: calc(100% + 2rem);
+    height: auto;
+    min-height: 19rem;
+    margin-left: -1rem;
+    transform: none;
+    box-shadow: 0.8rem 0.8rem 0 rgba(16, 16, 16, 0.08);
+  }
+
+  .scoutMediaPrimary {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .scoutMediaSecondary {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    margin-top: 2.8rem;
+    transform: none;
+  }
+
+  .panelStatus {
+    right: 0.8rem;
+    bottom: 0.8rem;
+  }
+
+  .scoutDetailRail,
+  .scoutTechRail {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-width: 0;
+    margin-top: 3rem;
+    transform: none;
+  }
+
+  .scoutDetailRail {
+    padding: 1rem 0 1.4rem 1rem;
+    background: transparent;
+  }
+
+  .scoutDetailRail p {
+    max-width: 20rem;
+  }
+
+  .scoutTechRail {
+    margin-top: 2.4rem;
+  }
+
+  .scoutMobileContext {
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid #101010;
+    padding-top: 0.8rem;
+  }
+
+  .scoutMobileContext p {
+    max-width: 22rem;
+    color: rgba(16, 16, 16, 0.66);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .scoutExit {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 4.5rem;
+    opacity: 1;
+    text-align: left;
+    transform: none;
+  }
+
+  .scoutExit span:last-child {
+    max-width: 16rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .scoutScene {
+    padding: 2rem 1.5rem 5.5rem;
+  }
+
+  .scoutBackplane {
+    height: 28rem;
+  }
+
+  .backplaneIndex {
+    top: 4.5rem;
+    left: 1.5rem;
+  }
+
+  .backplaneWord {
+    top: 8rem;
+    left: 1.5rem;
+    font-size: 21vw;
+  }
+
+  .scoutIntro {
+    margin-top: 3rem;
+    max-width: 25rem;
+  }
+
+  .scoutAxis {
+    top: 28rem;
+  }
+
+  .scoutViewport {
+    margin-top: 4.25rem;
+  }
+
+  .workspaceLead {
+    width: min(100%, 42rem);
+    margin-bottom: 2.8rem;
+  }
+
+  .workspaceLead h2 {
+    max-width: 12ch;
+    font-size: clamp(4.2rem, 9.6vw, 6.8rem);
+    line-height: 0.82;
+  }
+
+  .scoutMediaPanel,
+  .scoutMediaPrimary,
+  .scoutMediaSecondary {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .scoutMediaPrimary,
+  .scoutMediaSecondary {
+    aspect-ratio: 16 / 10;
+  }
+
+  .scoutMediaSecondary {
+    margin-top: 4rem;
+  }
+
+  .scoutDetailRail {
+    margin-top: 4rem;
+  }
+
+  .scoutTechRail {
+    margin-top: 3rem;
+  }
+}
+
+[data-reduced-motion="true"].scoutSequence {
+  min-height: 0;
+  overflow: visible;
+}
+
+[data-reduced-motion="true"] .scoutScene {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 2rem 2.5rem 5rem;
+}
+
+[data-reduced-motion="true"] .scoutGrid,
+[data-reduced-motion="true"] .scoutBackplane,
+[data-reduced-motion="true"] .scoutAxis {
+  opacity: 0.14;
+  transform: none;
+}
+
+[data-reduced-motion="true"] .scoutViewport,
+[data-reduced-motion="true"] .scoutCanvas {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform: none;
+}
+
+[data-reduced-motion="true"] .scoutViewport {
+  margin-top: 2.5rem;
+}
+
+[data-reduced-motion="true"] .scoutCanvas {
+  display: block;
+}
+
+[data-reduced-motion="true"] .workspaceLead,
+[data-reduced-motion="true"] .scoutMediaPanel,
+[data-reduced-motion="true"] .scoutDetailRail,
+[data-reduced-motion="true"] .scoutTechRail {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  min-width: 0;
+  margin: 2.5rem 0 0;
+  transform: none;
+}
+
+[data-reduced-motion="true"] .scoutMediaPanel {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+[data-reduced-motion="true"] .scoutMobileContext {
+  display: none;
+}
+
+[data-reduced-motion="true"] .scoutExit {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  margin-top: 3rem;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scoutMediaPrimary,
+  .scoutMediaSecondary,
+  .scoutAction span:last-child {
+    transition: none;
+  }
+}

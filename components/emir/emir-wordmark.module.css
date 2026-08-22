@@ -1,0 +1,213 @@
+.wordmark {
+  --wordmark-ink: #111111;
+  --wordmark-accent: #002fa7;
+  display: block;
+  width: min(74vw, 72rem);
+  height: auto;
+  overflow: visible;
+  color: var(--wordmark-ink);
+}
+
+.piece {
+  transform-box: fill-box;
+  transform-origin: center;
+  fill: currentColor;
+  will-change: transform;
+}
+
+.eStem,
+.eTop,
+.eMiddle,
+.eBottom,
+.mLeft,
+.mRight,
+.iStem,
+.iCap,
+.iFoot,
+.rStem,
+.rBowl,
+.rLeg {
+  color: var(--wordmark-ink);
+}
+
+.iStem,
+.iCap,
+.iFoot {
+  color: var(--wordmark-accent);
+}
+
+.eStem {
+  transform: translate(
+      calc(var(--emir-separation, 0) * -8px + var(--emir-frame, 0) * -30px + var(--emir-exit, 0) * -6px),
+      calc(var(--emir-separation, 0) * 14px + var(--emir-frame, 0) * -10px + var(--emir-exit, 0) * 0px)
+    )
+    rotate(calc(var(--emir-separation, 0) * -2deg + var(--emir-frame, 0) * 2deg));
+}
+
+.eTop {
+  transform: translate(
+      calc(var(--emir-separation, 0) * -6px + var(--emir-frame, 0) * -18px + var(--emir-exit, 0) * 0px),
+      calc(var(--emir-separation, 0) * -24px + var(--emir-frame, 0) * -30px + var(--emir-exit, 0) * 0px)
+    )
+    rotate(calc(var(--emir-separation, 0) * -1deg + var(--emir-frame, 0) * 1deg))
+    scaleX(calc(1 + var(--emir-frame, 0) * 0.72));
+}
+
+.eMiddle {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 20px + var(--emir-frame, 0) * 238px + var(--emir-exit, 0) * 28px),
+      calc(var(--emir-separation, 0) * 8px + var(--emir-frame, 0) * -4px + var(--emir-exit, 0) * 2px)
+    )
+    rotate(calc(var(--emir-separation, 0) * 2deg + var(--emir-frame, 0) * 88deg))
+    scaleX(calc(1 + var(--emir-frame, 0) * 0.24));
+}
+
+.eBottom {
+  transform: translate(
+      calc(var(--emir-separation, 0) * -4px + var(--emir-frame, 0) * -14px + var(--emir-exit, 0) * 0px),
+      calc(var(--emir-separation, 0) * 24px + var(--emir-frame, 0) * 30px + var(--emir-exit, 0) * 0px)
+    )
+    rotate(calc(var(--emir-separation, 0) * 1deg + var(--emir-frame, 0) * -1deg))
+    scaleX(calc(1 + var(--emir-frame, 0) * 0.72));
+}
+
+.mLeft {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 14px + var(--emir-frame, 0) * 132px + var(--emir-exit, 0) * 34px),
+      calc(var(--emir-separation, 0) * -10px + var(--emir-frame, 0) * -62px + var(--emir-exit, 0) * -12px)
+    )
+    rotate(calc(var(--emir-separation, 0) * -2deg + var(--emir-frame, 0) * 92deg))
+    scaleX(calc(1 - var(--emir-frame, 0) * 0.12 - var(--emir-exit, 0) * 0.12));
+}
+
+.mRight {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 42px + var(--emir-frame, 0) * 156px + var(--emir-exit, 0) * 28px),
+      calc(var(--emir-separation, 0) * 16px + var(--emir-frame, 0) * 128px + var(--emir-exit, 0) * 14px)
+    )
+    rotate(calc(var(--emir-separation, 0) * 3deg + var(--emir-frame, 0) * 88deg))
+    scaleX(calc(1 - var(--emir-frame, 0) * 0.12 - var(--emir-exit, 0) * 0.12));
+}
+
+.iStem {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 12px + var(--emir-frame, 0) * 330px + var(--emir-exit, 0) * 18px),
+      calc(var(--emir-separation, 0) * -6px + var(--emir-frame, 0) * 0px + var(--emir-exit, 0) * 0px)
+    )
+    scaleY(calc(1 + var(--emir-frame, 0) * 0.16));
+}
+
+.iCap,
+.iFoot {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 8px + var(--emir-frame, 0) * 316px + var(--emir-exit, 0) * 18px),
+      calc(var(--emir-separation, 0) * -6px + var(--emir-frame, 0) * 0px + var(--emir-exit, 0) * 0px)
+    )
+    scaleX(calc(1 + var(--emir-frame, 0) * 0.6));
+}
+
+.rStem {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 4px + var(--emir-frame, 0) * -24px + var(--emir-exit, 0) * 42px),
+      calc(var(--emir-separation, 0) * 8px + var(--emir-frame, 0) * -8px + var(--emir-exit, 0) * -2px)
+    )
+    rotate(calc(var(--emir-separation, 0) * -1deg + var(--emir-frame, 0) * 1deg));
+}
+
+.rBowl {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 10px + var(--emir-frame, 0) * -20px + var(--emir-exit, 0) * 32px),
+      calc(var(--emir-separation, 0) * -20px + var(--emir-frame, 0) * -40px + var(--emir-exit, 0) * -4px)
+    )
+    rotate(calc(var(--emir-separation, 0) * 1deg + var(--emir-frame, 0) * -1deg));
+}
+
+.rLeg {
+  transform: translate(
+      calc(var(--emir-separation, 0) * 22px + var(--emir-frame, 0) * 84px + var(--emir-exit, 0) * 42px),
+      calc(var(--emir-separation, 0) * 18px + var(--emir-frame, 0) * 84px + var(--emir-exit, 0) * 10px)
+    )
+    rotate(calc(var(--emir-separation, 0) * 2deg + var(--emir-frame, 0) * 18deg));
+}
+
+.registrationLine {
+  fill: none;
+  stroke: var(--wordmark-accent);
+  stroke-width: 2;
+  stroke-dasharray: 5 13;
+  opacity: 0.72;
+  transform: translateX(calc(var(--emir-exit, 0) * 26px));
+}
+
+@media (max-width: 767px) {
+  .wordmark {
+    width: min(94vw, 28rem);
+  }
+
+  .eStem {
+    transform: translate(-26px, -4px) scaleY(0.94);
+  }
+
+  .eTop,
+  .eBottom {
+    transform: translate(-12px, 0) scaleX(1.12);
+  }
+
+  .eMiddle {
+    transform: translate(146px, 0) rotate(90deg) scaleX(0.72);
+  }
+
+  .mLeft {
+    transform: translate(12px, -18px) rotate(90deg) scaleX(0.34);
+  }
+
+  .mRight {
+    transform: translate(-54px, 44px) rotate(90deg) scaleX(0.34);
+  }
+
+  .iStem {
+    transform: translate(194px, 0) scaleY(0.9);
+  }
+
+  .iCap,
+  .iFoot {
+    transform: translate(184px, 0) scaleX(0.9);
+  }
+
+  .rStem {
+    transform: translate(22px, -2px) scaleY(0.9);
+  }
+
+  .rBowl {
+    transform: translate(24px, -14px) scale(0.9);
+  }
+
+  .rLeg {
+    transform: translate(36px, 38px) scale(0.76);
+  }
+
+  .wordmark[data-state="assembled"] .eStem,
+  .wordmark[data-state="assembled"] .eTop,
+  .wordmark[data-state="assembled"] .eMiddle,
+  .wordmark[data-state="assembled"] .eBottom,
+  .wordmark[data-state="assembled"] .mLeft,
+  .wordmark[data-state="assembled"] .mRight,
+  .wordmark[data-state="assembled"] .iStem,
+  .wordmark[data-state="assembled"] .iCap,
+  .wordmark[data-state="assembled"] .iFoot,
+  .wordmark[data-state="assembled"] .rStem,
+  .wordmark[data-state="assembled"] .rBowl,
+  .wordmark[data-state="assembled"] .rLeg {
+    transform: none;
+  }
+
+  .wordmark[data-state="assembled"] .registrationLine {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    will-change: auto;
+  }
+}

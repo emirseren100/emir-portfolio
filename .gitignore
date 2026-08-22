@@ -17,6 +17,12 @@
 /.next/
 /out/
 
+# local QA captures and generated audit artifacts
+/artifacts/
+
+# local agent skill/tooling, not part of the portfolio source
+/10k-websites-skill/
+
 # production
 /build
 

@@ -1,0 +1,660 @@
+.motionLab {
+  --surface: #f5f5f2;
+  --paper: #ffffff;
+  --ink: #101010;
+  --muted: #696963;
+  --rule: rgba(16, 16, 16, 0.18);
+  --accent: #002fa7;
+  --emir-separation: 0;
+  --emir-frame: 0;
+  --emir-rail: 0;
+  --emir-exit: 0;
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 20;
+  top: 0.75rem;
+  left: 1rem;
+  padding: 0.65rem 0.8rem;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+}
+
+.labHeader {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 1.35rem 2.5rem;
+  font-size: 0.67rem;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.wordmark {
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 780;
+  letter-spacing: -0.08em;
+}
+
+.labHeaderMeta {
+  display: flex;
+  gap: 1.2rem;
+  color: var(--muted);
+}
+
+.headerLink {
+  justify-self: end;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.3rem;
+  color: var(--ink);
+}
+
+.sequence {
+  position: relative;
+  min-height: 390vh;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+  height: 100vh;
+  min-height: 42rem;
+  padding: 7.25rem 2.5rem 2rem;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--surface);
+}
+
+.stageGrid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.66;
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+  background-size: 8.3333% 100%, 100% 8.3333%;
+  pointer-events: none;
+}
+
+.stage::before {
+  position: absolute;
+  z-index: -1;
+  top: 18%;
+  left: 55%;
+  width: 13rem;
+  height: 13rem;
+  border: 1px solid rgba(0, 47, 167, 0.24);
+  content: "";
+  opacity: calc(0.1 + var(--emir-separation) * 0.28);
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: top left;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.stage::after {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 15%;
+  width: 38%;
+  border-top: 1px solid var(--accent);
+  content: "";
+  opacity: calc(0.16 + var(--emir-frame) * 0.3);
+  transform: translateX(calc(var(--emir-exit) * 1.5rem));
+  pointer-events: none;
+}
+
+.stageTopline {
+  position: relative;
+  z-index: 4;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  border-top: 1px solid var(--ink);
+  padding-top: 0.62rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marker {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--ink);
+}
+
+.sequenceHint {
+  color: var(--muted);
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 3;
+  grid-column: 1 / span 4;
+  grid-row: 4 / span 5;
+  align-self: center;
+  max-width: 25rem;
+  opacity: calc(1 - var(--emir-frame) * 0.96);
+  transform: translateX(calc(var(--emir-frame) * -2rem));
+  transition: opacity 200ms linear;
+}
+
+.eyebrow,
+.heroRole,
+.locationNote,
+.projectVisualTopline,
+.projectVisualDescription,
+.metadataRail,
+.exitMarker,
+.afterSequence {
+  font-size: 0.67rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 1.4rem;
+  color: var(--accent);
+}
+
+.heroCopy h1 {
+  max-width: 7ch;
+  margin: 0;
+  font-size: clamp(3.25rem, 5.2vw, 6.5rem);
+  font-weight: 640;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+}
+
+.heroRole {
+  margin: 2rem 0 0;
+  color: var(--muted);
+}
+
+.artifactInteraction {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 58%;
+  width: min(74vw, 72rem);
+  aspect-ratio: 1120 / 420;
+  transform: translate(-38%, -50%);
+  pointer-events: auto;
+}
+
+.artifact {
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+}
+
+.locationNote {
+  position: relative;
+  z-index: 3;
+  grid-column: 1 / span 3;
+  grid-row: 11 / span 2;
+  align-self: end;
+  display: grid;
+  gap: 0.36rem;
+  color: var(--muted);
+  opacity: calc(1 - var(--emir-frame) * 0.95);
+  transform: translateY(calc(var(--emir-frame) * 1rem));
+  transition: opacity 200ms linear;
+}
+
+.projectFrame {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 4%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem;
+  width: min(58vw, 49rem);
+  opacity: calc(var(--emir-frame) * 0.96);
+  transform: translateY(-50%) translateX(calc((1 - var(--emir-frame)) * 4rem));
+  transform-origin: center right;
+  perspective: 1000px;
+  pointer-events: auto;
+}
+
+.projectFrame[data-frame-state="assembled"],
+.projectFrame[data-frame-state="separating"] {
+  pointer-events: none;
+}
+
+.projectVisual {
+  position: relative;
+  display: grid;
+  min-height: 18rem;
+  padding: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  clip-path: inset(calc((1 - var(--emir-frame)) * 42%) 0 0 0);
+  transform-style: preserve-3d;
+  transition: border-color 180ms ease, clip-path 180ms linear;
+}
+
+.projectSignal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--accent);
+  transition: width 180ms ease;
+}
+
+.projectVisual:hover .projectSignal,
+.projectVisual:focus-within .projectSignal {
+  width: 7px;
+}
+
+.projectVisualTopline {
+  display: flex;
+  justify-content: space-between;
+  align-self: start;
+  padding-left: 0.8rem;
+  color: var(--muted);
+}
+
+.projectVisualCore {
+  align-self: center;
+  display: grid;
+  gap: 0.55rem;
+  padding: 1rem 0 1rem 0.8rem;
+}
+
+.projectVisualIndex {
+  color: var(--accent);
+  font-size: clamp(2.5rem, 5vw, 5.3rem);
+  font-weight: 680;
+  letter-spacing: -0.09em;
+  line-height: 0.85;
+}
+
+.projectVisualName {
+  font-size: clamp(2rem, 4.6vw, 4.8rem);
+  font-weight: 690;
+  letter-spacing: -0.085em;
+  line-height: 0.85;
+}
+
+.projectVisualDescription {
+  color: var(--muted);
+}
+
+.projectVisualRule {
+  align-self: end;
+  border-top: 1px solid var(--ink);
+}
+
+.metadataRail {
+  display: grid;
+  align-content: space-between;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1.25rem 0.9rem;
+  border-top: 1px solid var(--ink);
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+  opacity: calc(0.1 + var(--emir-rail) * 0.9);
+  transform: translateX(calc((1 - var(--emir-rail)) * 0.8rem));
+  transition: opacity 180ms linear;
+}
+
+.metadataRail strong {
+  align-self: end;
+  font-size: 0.88rem;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.metadataIndex {
+  color: #aebfff;
+  font-size: 2.7rem;
+  font-weight: 650;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.metadataRail > span:not(.metadataIndex) {
+  align-self: end;
+  color: rgba(245, 245, 242, 0.7);
+  font-size: 0.58rem;
+}
+
+.inlineAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  justify-self: start;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2rem;
+  color: inherit;
+  font-size: 0.58rem;
+  white-space: nowrap;
+}
+
+.inlineAction svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  transition: transform 180ms ease;
+}
+
+.inlineAction:hover svg,
+.inlineAction:focus-visible svg {
+  transform: translate(2px, -2px);
+}
+
+.exitMarker {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--muted);
+  opacity: calc(0.18 + var(--emir-exit) * 0.82);
+  transform: translateX(calc((1 - var(--emir-exit)) * 1rem));
+}
+
+.exitMarker span:first-child {
+  display: block;
+  width: 2.8rem;
+  border-top: 1px solid var(--accent);
+}
+
+.screenReaderStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.afterSequence {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  min-height: 38rem;
+  padding: 6rem 2.5rem;
+  border-top: 1px solid var(--ink);
+  background: var(--surface);
+}
+
+.afterSequence h2 {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(3rem, 6vw, 7rem);
+  font-weight: 640;
+  letter-spacing: -0.08em;
+  line-height: 0.88;
+}
+
+.afterSequence p {
+  max-width: 30rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+@media (max-width: 1100px) {
+  .labHeader,
+  .stage {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .heroCopy {
+    grid-column: 1 / span 5;
+  }
+
+  .artifactInteraction {
+    left: 59%;
+    width: 70vw;
+  }
+
+  .projectFrame {
+    right: 2%;
+    width: 66vw;
+  }
+
+  .afterSequence {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .motionLab {
+    overflow: hidden;
+  }
+
+  .labHeader {
+    position: relative;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .labHeaderMeta {
+    display: none;
+  }
+
+  .headerLink {
+    font-size: 0.58rem;
+  }
+
+  .sequence {
+    min-height: 0;
+  }
+
+  .stage {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 1.25rem 1rem 4.5rem;
+    overflow: visible;
+  }
+
+  .stageTopline {
+    display: flex;
+    min-height: 2.8rem;
+  }
+
+  .sequenceHint {
+    max-width: 7rem;
+    text-align: right;
+  }
+
+  .heroCopy {
+    margin-top: 4rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.2rem;
+  }
+
+  .heroCopy h1 {
+    max-width: 9ch;
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .heroRole {
+    margin-top: 1.5rem;
+  }
+
+  .artifactInteraction {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 4rem auto 0;
+    transform: none;
+  }
+
+  .locationNote {
+    margin-top: 1.5rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .projectFrame {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: block;
+    width: 100%;
+    margin: 4rem auto 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  .projectVisual {
+    min-height: 16rem;
+    clip-path: none;
+  }
+
+  .metadataRail {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    min-height: 11rem;
+    padding: 1rem;
+    border: 1px solid var(--ink);
+    border-top: 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  .metadataIndex {
+    grid-row: 1 / span 2;
+  }
+
+  .metadataRail strong,
+  .metadataRail > span:not(.metadataIndex),
+  .inlineAction {
+    grid-column: 2;
+  }
+
+  .metadataRail strong {
+    align-self: start;
+  }
+
+  .metadataRail > span:not(.metadataIndex) {
+    align-self: start;
+  }
+
+  .inlineAction {
+    align-self: end;
+  }
+
+  .exitMarker {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 4rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .afterSequence {
+    display: block;
+    min-height: 28rem;
+    padding: 4rem 1rem;
+  }
+
+  .afterSequence h2 {
+    margin-top: 3rem;
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+}
+
+[data-reduced-motion="true"] .sequence {
+  min-height: auto;
+}
+
+[data-reduced-motion="true"] .stage {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+[data-reduced-motion="true"] .heroCopy,
+[data-reduced-motion="true"] .locationNote,
+[data-reduced-motion="true"] .projectFrame,
+[data-reduced-motion="true"] .projectVisual,
+[data-reduced-motion="true"] .metadataRail,
+[data-reduced-motion="true"] .exitMarker {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+[data-reduced-motion="true"] .projectVisual {
+  clip-path: none;
+}
+
+[data-reduced-motion="true"] .stage::before,
+[data-reduced-motion="true"] .stage::after {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skipLink,
+  .stage::before,
+  .stage::after,
+  .projectVisual,
+  .projectSignal,
+  .inlineAction svg {
+    transition: none;
+  }
+}

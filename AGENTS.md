@@ -1,3 +1,14 @@
+# Emir Portfolio — Proje Kuralları
+
+- Görsel yön Swiss/editoryal: beyaz veya nötr açık yüzey, near-black tipografi, tek kobalt vurgu, 1 px grid kuralları ve güçlü asimetrik boşluk.
+- EMIR — Kinetik Sistem dekoratif bir logo değil; scroll, proje çerçevesi ve metadata yönlendirmesiyle işlevsel bir arayüz durum makinesidir.
+- Hareketler aynı grammar’ı paylaşmalı: transform, scale, clip/mask ve kontrollü easing. Rastgele parçacık, glow, sürekli cursor trail, anlamsız parallax ve jenerik AI estetiği eklenmez.
+- Önce native scroll + CSS/SVG; GSAP/ScrollTrigger yalnızca pinned sequence için. WebGL/Three.js ancak ölçülmüş, gerekçeli bir ihtiyaç olarak ayrıca onaylanır.
+- Layout ölçümünü scroll sırasında yapma. Animasyonlarda tercihen `transform`, `opacity` ve CSS custom property kullan; pahalı filtre ve layout değişikliklerinden kaçın.
+- Her içerik HTML ile okunabilir olmalı; SVG/canvas görsel destek sağlar, proje verisini saklamaz.
+- Klavye, focus-visible, touch ve `prefers-reduced-motion` senaryoları ilk sınıf kabul edilir. Mobilde desktop choreography mekanik olarak küçültülmez; sadeleştirilir.
+- Yeni bir route veya motion sistemi eklerken ilgili docs dosyasını güncelle. Lint, production build ve gerçek tarayıcı QA tamamlanmadan işi bitmiş sayma.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know

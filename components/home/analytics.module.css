@@ -1,0 +1,628 @@
+.analyticsSequence {
+  --analytics-progress: 0;
+  --analytics-surface: 0;
+  --analytics-lens-gate: 0;
+  --analytics-exit: 0;
+  --analytics-lens-x: 50;
+  --analytics-lens-y: 50;
+  --analytics-lens-size: 0;
+  --analytics-lens-active: 0;
+  position: relative;
+  min-height: 320vh;
+  overflow: clip;
+  border-top: 1px solid #111111;
+  background: #dfe2dd;
+  color: #111111;
+}
+
+.analyticsScene {
+  position: relative;
+  height: 100vh;
+  min-height: 44rem;
+  overflow: hidden;
+  isolation: isolate;
+  background: #dfe2dd;
+}
+
+.analyticsGrid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: calc(0.28 - var(--analytics-progress) * 0.16);
+  background-image:
+    linear-gradient(to right, rgba(17, 17, 17, 0.13) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.13) 1px, transparent 1px);
+  background-size: 8.3333% 100%, 100% 16.6667%;
+  pointer-events: none;
+}
+
+.analyticsCoordinate {
+  position: absolute;
+  z-index: 1;
+  top: 56%;
+  left: -5vw;
+  display: grid;
+  gap: 2.1rem;
+  width: 120vw;
+  transform: translate3d(calc(var(--analytics-progress) * -10vw), 0, 0);
+  pointer-events: none;
+}
+
+.analyticsCoordinate span {
+  display: block;
+  border-top: 1px solid rgba(0, 47, 167, 0.45);
+}
+
+.analyticsTopline,
+.analyticsIntro,
+.analyticsTitleBlock,
+.analyticsSurface,
+.analyticsRail,
+.analyticsExit,
+.analyticsMobileContext {
+  will-change: transform, opacity;
+}
+
+.analyticsTopline {
+  position: absolute;
+  z-index: 8;
+  top: 7.5rem;
+  right: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #111111;
+  padding-top: 0.62rem;
+  color: rgba(17, 17, 17, 0.66);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.analyticsIntro {
+  position: absolute;
+  z-index: 3;
+  top: 22vh;
+  left: 7vw;
+  width: min(21rem, 24vw);
+  color: rgba(17, 17, 17, 0.68);
+  font-size: 0.83rem;
+  line-height: 1.4;
+  opacity: clamp(0, calc(1 - var(--analytics-progress) * 1.35), 1);
+  transform: translate3d(calc(var(--analytics-progress) * -3vw), 0, 0);
+}
+
+.analyticsIntro p:last-child {
+  margin-top: 1.4rem;
+}
+
+.analyticsEyebrow,
+.analyticsTitleLabel,
+.analyticsIndex,
+.analyticsStaticLabel,
+.analyticsRailLabel,
+.analyticsSurfaceHint,
+.analyticsLensLabel,
+.analyticsExit,
+.analyticsScreenReaderStatus {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.analyticsEyebrow,
+.analyticsIndex,
+.analyticsRailIndex,
+.analyticsExit span:first-child {
+  color: #002fa7;
+}
+
+.analyticsTitleBlock {
+  position: absolute;
+  z-index: 2;
+  top: 34vh;
+  left: 7vw;
+  display: grid;
+  gap: 0.75rem;
+  opacity: clamp(0.16, calc(1 - var(--analytics-progress) * 1.45), 1);
+  transform: translate3d(calc(var(--analytics-progress) * -9vw), 0, 0) scale(calc(1 - var(--analytics-progress) * 0.1));
+  transform-origin: left center;
+}
+
+.analyticsIndex {
+  font-size: 1rem;
+}
+
+.analyticsTitleBlock h2 {
+  max-width: 8ch;
+  margin: 0;
+  font-size: clamp(3.7rem, 8.5vw, 8.8rem);
+  font-weight: 700;
+  letter-spacing: -0.12em;
+  line-height: 0.76;
+}
+
+.analyticsTitleLabel {
+  color: rgba(17, 17, 17, 0.56);
+}
+
+.analyticsSurface {
+  position: absolute;
+  z-index: 5;
+  top: 19vh;
+  left: 24vw;
+  width: min(68vw, 64rem);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #111111;
+  background: #08050f;
+  box-shadow: 1.4rem 1.4rem 0 rgba(17, 17, 17, 0.09);
+  opacity: clamp(0, calc(var(--analytics-surface) * 1.22), 1);
+  outline: none;
+  transform: translate3d(calc((1 - var(--analytics-surface)) * 5vw), calc((1 - var(--analytics-surface)) * 3vh), 0)
+    scale(calc(0.82 + var(--analytics-surface) * 0.18));
+  transform-origin: center center;
+  clip-path: inset(
+    calc((1 - var(--analytics-surface)) * 16%)
+    calc((1 - var(--analytics-surface)) * 10%)
+    calc((1 - var(--analytics-surface)) * 12%)
+    calc((1 - var(--analytics-surface)) * 8%)
+  );
+  will-change: transform, opacity, clip-path;
+}
+
+.analyticsSurface:focus-visible {
+  border-color: #002fa7;
+  box-shadow: 1.4rem 1.4rem 0 rgba(0, 47, 167, 0.14);
+}
+
+.analyticsPrimaryLayer,
+.analyticsLensLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.analyticsPrimaryLayer > img,
+.analyticsLensLayer > img,
+.analyticsStaticMedia > img,
+.analyticsMobileMedia > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #08050f;
+  object-fit: contain;
+  user-select: none;
+}
+
+.analyticsStaticMedia,
+.analyticsMobileMedia {
+  position: relative;
+}
+
+.analyticsLensLayer {
+  clip-path: circle(
+    clamp(0px, calc(var(--analytics-lens-size) * 1vw), 9rem)
+    at calc(var(--analytics-lens-x) * 1%) calc(var(--analytics-lens-y) * 1%)
+  );
+  pointer-events: none;
+}
+
+.analyticsLensBoundary {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--analytics-lens-y) * 1%);
+  left: calc(var(--analytics-lens-x) * 1%);
+  width: calc(clamp(0px, calc(var(--analytics-lens-size) * 1vw), 9rem) * 2);
+  height: calc(clamp(0px, calc(var(--analytics-lens-size) * 1vw), 9rem) * 2);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  opacity: var(--analytics-lens-active);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.analyticsLensLabel {
+  position: absolute;
+  z-index: 4;
+  top: 0.9rem;
+  left: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(8, 5, 15, 0.72);
+  padding: 0.35rem 0.45rem;
+  color: rgba(255, 255, 255, 0.82);
+  opacity: calc(var(--analytics-lens-active) * var(--analytics-lens-gate));
+  pointer-events: none;
+}
+
+.analyticsSurfaceHint {
+  position: absolute;
+  z-index: 4;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(8, 5, 15, 0.72);
+  padding: 0.35rem 0.45rem;
+  color: rgba(255, 255, 255, 0.72);
+  opacity: calc((1 - var(--analytics-lens-active)) * var(--analytics-lens-gate));
+  pointer-events: none;
+}
+
+.analyticsCorner {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 0;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-top: 1px solid #002fa7;
+  border-left: 1px solid #002fa7;
+  pointer-events: none;
+}
+
+.analyticsRail {
+  position: absolute;
+  z-index: 7;
+  right: 3vw;
+  bottom: 8vh;
+  display: grid;
+  gap: 0.78rem;
+  width: min(12rem, 14vw);
+  border-left: 2px solid #002fa7;
+  padding: 0.2rem 0 0.35rem 1rem;
+  opacity: calc(clamp(0, calc((var(--analytics-progress) - 0.37) * 2.2), 1) * (1 - var(--analytics-exit)));
+  transform: translate3d(calc((1 - var(--analytics-progress)) * 1.4rem), 0, 0);
+}
+
+.analyticsRailIndex {
+  font-size: 3.6rem;
+  letter-spacing: -0.1em;
+  line-height: 0.7;
+}
+
+.analyticsRail strong {
+  font-size: 1rem;
+  letter-spacing: -0.04em;
+}
+
+.analyticsRail > span:not(.analyticsRailIndex):not(.analyticsRailRule):not(.analyticsRailLabel),
+.analyticsRail p {
+  color: rgba(17, 17, 17, 0.62);
+  font-size: 0.73rem;
+  line-height: 1.35;
+}
+
+.analyticsRail p {
+  margin: 0;
+}
+
+.analyticsRailRule {
+  display: block;
+  border-top: 1px solid rgba(17, 17, 17, 0.28);
+}
+
+.analyticsRailLabel {
+  color: rgba(17, 17, 17, 0.56);
+}
+
+.analyticsRail ul,
+.analyticsMobileContext ul {
+  display: grid;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.analyticsRail li,
+.analyticsMobileContext li {
+  border-top: 1px solid rgba(17, 17, 17, 0.2);
+  padding-top: 0.34rem;
+  font-size: 0.73rem;
+}
+
+.analyticsStaticAlt,
+.analyticsMobileFlow,
+.analyticsMobileContext {
+  display: none;
+}
+
+.analyticsStaticMedia,
+.analyticsMobileMedia {
+  min-height: 1px;
+}
+
+.analyticsExit {
+  position: absolute;
+  z-index: 8;
+  right: 3vw;
+  bottom: 7vh;
+  display: grid;
+  gap: 0.45rem;
+  color: #111111;
+  opacity: clamp(0, calc((var(--analytics-exit) - 0.04) * 1.1), 1);
+  text-align: right;
+  transform: translate3d(calc((1 - var(--analytics-exit)) * 1.4rem), 0, 0);
+}
+
+.analyticsExit span:first-child {
+  font-size: 1.25rem;
+}
+
+.analyticsExit span:last-child {
+  max-width: 16rem;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.analyticsScreenReaderStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1100px) {
+  .analyticsTopline {
+    right: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .analyticsSurface {
+    left: 21vw;
+    width: 72vw;
+  }
+
+  .analyticsRail {
+    right: 1.5rem;
+    width: 12rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .analyticsSequence {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .analyticsScene {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding: 1.2rem 1rem 5rem;
+  }
+
+  .analyticsGrid {
+    opacity: 0.2;
+    background-size: 25% 100%, 100% 14rem;
+  }
+
+  .analyticsCoordinate {
+    top: 25rem;
+    left: -1rem;
+    width: calc(100% + 2rem);
+    gap: 1.7rem;
+    transform: none;
+  }
+
+  .analyticsTopline {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    min-height: 2.7rem;
+    padding-top: 0.55rem;
+  }
+
+  .analyticsTopline span:last-child {
+    max-width: 10rem;
+    text-align: right;
+  }
+
+  .analyticsTopline {
+    order: 0;
+  }
+
+  .analyticsIntro,
+  .analyticsTitleBlock,
+  .analyticsSurface,
+  .analyticsRail,
+  .analyticsExit {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  .analyticsIntro {
+    order: 1;
+    margin-top: 4rem;
+  }
+
+  .analyticsIntro p:last-child {
+    max-width: 22rem;
+  }
+
+  .analyticsTitleBlock {
+    order: 2;
+    margin-top: 4rem;
+  }
+
+  .analyticsTitleBlock h2 {
+    max-width: 100%;
+    font-size: clamp(3.2rem, 16vw, 6rem);
+    overflow-wrap: anywhere;
+  }
+
+  .analyticsSurface {
+    display: none;
+  }
+
+  .analyticsRail {
+    order: 4;
+    display: grid;
+    margin-top: 3.2rem;
+    padding: 0.2rem 0 0.35rem 1rem;
+  }
+
+  .analyticsStaticAlt {
+    display: none;
+  }
+
+  .analyticsMobileFlow {
+    order: 3;
+    position: relative;
+    z-index: 4;
+    display: grid;
+    gap: 2.8rem;
+    margin: 4rem -1rem 0;
+  }
+
+  .analyticsMobileMediaBlock {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .analyticsStaticLabel {
+    padding: 0 1rem;
+    color: rgba(17, 17, 17, 0.58);
+  }
+
+  .analyticsMobileMedia {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-top: 1px solid #111111;
+    border-bottom: 1px solid #111111;
+    background: #08050f;
+  }
+
+  .analyticsMobileMedia > img {
+    object-fit: cover;
+    object-position: 57% top;
+  }
+
+  .analyticsMobileContext {
+    order: 5;
+    position: relative;
+    z-index: 4;
+    display: grid;
+    gap: 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid #111111;
+    padding-top: 0.8rem;
+  }
+
+  .analyticsMobileContext p {
+    max-width: 23rem;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .analyticsExit {
+    order: 6;
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 4.5rem;
+    text-align: left;
+  }
+
+  .analyticsExit span:last-child {
+    max-width: 18rem;
+  }
+}
+
+[data-reduced-motion="true"].analyticsSequence {
+  min-height: 0;
+  overflow: visible;
+}
+
+[data-reduced-motion="true"] .analyticsScene {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 2rem 2.5rem 5rem;
+}
+
+[data-reduced-motion="true"] .analyticsGrid,
+[data-reduced-motion="true"] .analyticsCoordinate {
+  opacity: 0.14;
+  transform: none;
+}
+
+[data-reduced-motion="true"] .analyticsTopline,
+[data-reduced-motion="true"] .analyticsIntro,
+[data-reduced-motion="true"] .analyticsTitleBlock,
+[data-reduced-motion="true"] .analyticsSurface,
+[data-reduced-motion="true"] .analyticsRail,
+[data-reduced-motion="true"] .analyticsExit {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  width: 100%;
+  margin-top: 2.5rem;
+  opacity: 1;
+  transform: none;
+  clip-path: none;
+}
+
+[data-reduced-motion="true"] .analyticsSurface {
+  display: block;
+  aspect-ratio: 16 / 10;
+  box-shadow: none;
+}
+
+[data-reduced-motion="true"] .analyticsLensLayer,
+[data-reduced-motion="true"] .analyticsLensBoundary,
+[data-reduced-motion="true"] .analyticsLensLabel,
+[data-reduced-motion="true"] .analyticsSurfaceHint,
+[data-reduced-motion="true"] .analyticsCorner {
+  display: none;
+}
+
+[data-reduced-motion="true"] .analyticsStaticAlt {
+  display: grid;
+  gap: 0.6rem;
+  position: relative;
+  width: min(100%, 52rem);
+  margin: 2.5rem 0 0 auto;
+}
+
+[data-reduced-motion="true"] .analyticsStaticMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #111111;
+  background: #08050f;
+}
+
+[data-reduced-motion="true"] .analyticsMobileFlow,
+[data-reduced-motion="true"] .analyticsMobileContext {
+  display: grid;
+}
+
+[data-reduced-motion="true"] .analyticsExit {
+  margin-top: 3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analyticsSurface,
+  .analyticsLensBoundary,
+  .analyticsPrimaryLayer > img,
+  .analyticsLensLayer > img {
+    transition: none;
+  }
+}

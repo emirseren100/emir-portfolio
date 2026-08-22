@@ -8,8 +8,8 @@
 
 | Referans | En güçlü ilke | Gözlemlenen teknik omurga | Portföye aktarılacak karşılık |
 | --- | --- | --- | --- |
-| Lando Norris | Editoryal anlatıyı scroll ile sahnelemek | Sticky/pinned bloklar, yumuşak scroll, çoklu canvas, Rive geçişi | E/M parçalarının bir bölümden diğerine anlam taşıması |
-| Igloo Inc | İmleci mekânın yönlendirme girdisine çevirmek | Metinsiz, tam ekran WebGL sahnesi; pointer ile kamera/kompozisyon tepkisi | E/M’nin pointer ile düşük genlikli yön değiştirmesi ve scroll ile durum değiştirmesi |
+| Lando Norris | Editoryal anlatıyı scroll ile sahnelemek | Sticky/pinned bloklar, yumuşak scroll, çoklu canvas, Rive geçişi | EMIR parçalarının bir bölümden diğerine anlam taşıması |
+| Igloo Inc | İmleci mekânın yönlendirme girdisine çevirmek | Metinsiz, tam ekran WebGL sahnesi; pointer ile kamera/kompozisyon tepkisi | EMIR’in pointer ile düşük genlikli yön değiştirmesi ve scroll ile durum değiştirmesi |
 | Lusion | Tek bir motion gramerini 3D ve UI’a yaymak | Three.js canvas, sanal scroll, video overlay, preloader, hover CSS kuralları | Artefakt, proje maskesi ve CTA’ların aynı “parçalanma / birleşme” dilini kullanması |
 
 Bu üç ilke aynı görsel kimliği taklit etmek için değil, farklı katmanlara ayrılmak için kullanılıyor: Lando içerik ritmini, Igloo spatial input’u, Lusion ise mikro-etkileşim ve teknik geri dönüş planını besliyor.
@@ -64,7 +64,7 @@ Pacing hızlı bir açılıştan sonra uzun, kontrollü duraklamalara geçiyor. 
 
 ### Portföy için kavramsal ders
 
-İçeriği scroll ile sadece “hareket ettirmek” yerine, her scroll aralığına bir anlatı fiili verilmeli: tanıt, ayır, karşılaştır, yakınlaştır, arşivle, geri birleştir. E/M artefaktı bu fiillerin durum göstergesi olabilir.
+İçeriği scroll ile sadece “hareket ettirmek” yerine, her scroll aralığına bir anlatı fiili verilmeli: tanıt, ayır, karşılaştır, yakınlaştır, arşivle, geri birleştir. EMIR artefaktı bu fiillerin durum göstergesi olabilir.
 
 ## 2. Igloo Inc
 
@@ -100,7 +100,7 @@ Tek bir tam ekran sahne bile asset indirme, GPU belleği, shader derleme, DPR ko
 
 ### Akılda kalıcılık
 
-Metin anlatısı olmadan bir “dünya”nın oluşmasını izlemek akılda kalıyor. Nesne dekor gibi durmuyor; kullanıcı kendisini o mekâna bakıyor hissediyor. E/M için karşılığı, artefaktın her sayfada aynı kalmaması ama her değişimin içerik anlamı taşımasıdır.
+Metin anlatısı olmadan bir “dünya”nın oluşmasını izlemek akılda kalıyor. Nesne dekor gibi durmuyor; kullanıcı kendisini o mekâna bakıyor hissediyor. EMIR için karşılığı, artefaktın her sayfada aynı kalmaması ama her değişimin içerik anlamı taşımasıdır.
 
 ## 3. Lusion
 
@@ -130,7 +130,7 @@ Bu mikro davranışlar içerikten bağımsız süsler değil; “buraya tıklan�
 
 ### Media geçişleri ve proje sunumu
 
-Hero/reel bölümü video overlay’i açabiliyor. Featured work linkleri kategori etiketlerini ve karakterleri tekrar eden katmanlar halinde sunuyor; bu, proje adını grid içinde canlı tutuyor. Proje detayında açıklama ve `Next Project` numaralı geçişi, sayfayı bağımsız landing page’ler yerine bir rota dizisi gibi bağlıyor. Bu fikir E/M sisteminde bir sonraki proje için artefakt geometrisinin kontrollü değişmesine dönüşebilir.
+Hero/reel bölümü video overlay’i açabiliyor. Featured work linkleri kategori etiketlerini ve karakterleri tekrar eden katmanlar halinde sunuyor; bu, proje adını grid içinde canlı tutuyor. Proje detayında açıklama ve `Next Project` numaralı geçişi, sayfayı bağımsız landing page’ler yerine bir rota dizisi gibi bağlıyor. Bu fikir EMIR sisteminde bir sonraki proje için artefakt geometrisinin kontrollü değişmesine dönüşebilir.
 
 ### Navigasyon ve yükleme
 
@@ -159,7 +159,7 @@ Pacing, yavaşça oluşan 3D hero → büyük bir sakin tipografik cümle → me
 
 ## Birleştirme riskleri
 
-1. Üç kaynaktaki “yüksek teknoloji” etkisini aynı anda kullanmak sayfayı gürültülü yapabilir. E/M’nin her durumu bir içerik göreviyle sınırlanmalı.
+1. Üç kaynaktaki “yüksek teknoloji” etkisini aynı anda kullanmak sayfayı gürültülü yapabilir. EMIR’in her durumu bir içerik göreviyle sınırlanmalı.
 2. WebGL sahnesi scroll anlatısını gölgede bırakabilir. Artefaktın metin ve proje yönlendirmesi olmadan hareket etmesine izin verilmemeli.
 3. Smooth scroll ve pinned bölümler erişilebilirlik, klavye ve mobil performansını kırabilir. Native scroll fallback’i her zaman korunmalı.
 4. Büyük medya, harici video ve GPU renderer ilk açılışı uzatabilir. Preloader yalnızca gerçek yükleme ilerlemesini yansıtmalı; sahte bekleme yaratmamalı.
@@ -177,10 +177,9 @@ Pacing, yavaşça oluşan 3D hero → büyük bir sakin tipografik cümle → me
 
 ## Referans etkisinin portföye dağılımı
 
-| Tasarım kararı | Esas kaynak | E/M’deki özgün karşılık |
+| Tasarım kararı | Esas kaynak | EMIR’deki özgün karşılık |
 | --- | --- | --- |
 | Scroll ile anlatı ritmi | Lando | Artefaktın birleşme, açılma ve yeniden hizalanma durumları |
-| Pointer ile mekânsal tepki | Igloo | E/M modüllerinin 2–4° bakış değişimi ve maskeye oturma davranışı |
+| Pointer ile mekânsal tepki | Igloo | EMIR modüllerinin düşük dereceli bakış değişimi ve maskeye oturma davranışı |
 | Tutarlı hover ve geçiş grameri | Lusion | Aynı parça-split easing’inin buton, kart, menü ve proje geçişinde kullanılması |
 | Mobile fallback | Lando + Lusion | Scroll sahnesinin snap/step kontrolüne ve poster/SVG’ye düşmesi |
-
