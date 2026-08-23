@@ -267,9 +267,8 @@ export function ProductionHome() {
           <a href="#playground">PLAYGROUND</a>
           <a href="#contact">CONTACT</a>
         </nav>
+        <SectionIndex homePhase={homeIndexPhase} />
       </header>
-
-      <SectionIndex homePhase={homeIndexPhase} />
 
       <section ref={sequenceRef} id="index" className={styles.homeSequence} aria-labelledby="home-title">
         <div ref={stageRef} className={styles.homeStage}>

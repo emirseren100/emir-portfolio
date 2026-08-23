@@ -1,18 +1,16 @@
 .indexRail {
-  --index-ink: #111111;
-  --index-track: rgb(17 17 17 / 0.32);
-  position: fixed;
-  z-index: 15;
-  top: 50%;
-  right: clamp(1rem, 2vw, 2.5rem);
-  width: 5.3rem;
+  grid-column: 3;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-self: end;
+  min-width: 0;
   pointer-events: none;
-  transform: translateY(-50%);
 }
 
-.indexRail[data-tone="dark"] {
-  --index-ink: #f5f5f2;
-  --index-track: rgb(245 245 242 / 0.4);
+.indexRail[data-surface="navigation"] {
+  --index-ink: var(--home-ink, #111111);
+  --index-track: var(--home-rule, rgb(17 17 17 / 0.28));
 }
 
 .indexRailText {
@@ -20,33 +18,30 @@
 }
 
 .indexRailHeader {
-  display: grid;
-  gap: 0.28rem;
-  border-top: 1px solid currentColor;
-  padding-top: 0.5rem;
+  flex: none;
   font-size: 0.54rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  line-height: 1.15;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .indexRailHeader span:last-child {
-  opacity: 0.58;
+  display: none;
 }
 
 .indexRailBody {
   position: relative;
-  margin-top: 0.85rem;
+  min-width: 0;
 }
 
 .indexRailTrack,
 .indexRailProgress {
   position: absolute;
-  top: 0.25rem;
-  bottom: 0.25rem;
-  left: 0.14rem;
-  width: 1px;
+  top: 50%;
+  right: 0.1rem;
+  left: 0.1rem;
+  height: 1px;
 }
 
 .indexRailTrack {
@@ -55,23 +50,23 @@
 
 .indexRailProgress {
   background: var(--accent);
-  transform: scaleY(var(--index-progress));
-  transform-origin: top;
+  transform: scaleX(var(--index-progress));
+  transform-origin: left;
   transition: transform 180ms linear;
 }
 
 .indexRailList {
   position: relative;
-  display: grid;
-  gap: 0.56rem;
+  display: flex;
+  gap: 0.46rem;
+  align-items: center;
   list-style: none;
 }
 
 .indexRailItem {
-  display: grid;
-  grid-template-columns: 0.35rem 1fr;
+  display: flex;
+  gap: 0.24rem;
   align-items: center;
-  gap: 0.5rem;
   opacity: 0.42;
   transition: opacity 180ms linear;
 }
@@ -81,9 +76,8 @@
 }
 
 .indexRailDot {
-  display: block;
-  width: 0.32rem;
-  height: 0.32rem;
+  width: 0.22rem;
+  height: 0.22rem;
   border: 1px solid currentColor;
 }
 
@@ -120,14 +114,7 @@
 }
 
 .indexRailCurrent {
-  margin-top: 0.8rem;
-  border-top: 1px solid currentColor;
-  padding-top: 0.5rem;
-  font-size: 0.54rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  text-transform: uppercase;
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -138,86 +125,21 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 899.98px) {
+@media (max-width: 1100px) {
   .indexRail {
-    top: 68%;
-    right: 0.5rem;
-    width: 2.3rem;
+    gap: 0;
   }
 
   .indexRailHeader,
-  .indexRailCurrent,
-  .indexRailItemLabel {
-    display: none;
-  }
-
-  .indexRailBody {
-    margin-top: 0;
-  }
-
   .indexRailTrack,
-  .indexRailProgress {
-    top: 0.18rem;
-    bottom: 0.18rem;
-  }
-
-  .indexRailList {
-    gap: 0.66rem;
-  }
-
-  .indexRailItem {
-    grid-template-columns: 0.35rem 1fr;
-    gap: 0.38rem;
-  }
-
-  .indexRailItemText {
-    font-size: 0.5rem;
-  }
-
-  .indexRailItem[data-active] .indexRailItemText {
-    color: var(--accent);
-    font-weight: 800;
+  .indexRailProgress,
+  .indexRailItem:not([data-active]) {
+    display: none;
   }
 }
 
 @media (max-width: 767px) {
   .indexRail {
-    right: 0.35rem;
-    width: 2.2rem;
-  }
-
-  .indexRailHeader,
-  .indexRailCurrent,
-  .indexRailItemLabel {
     display: none;
-  }
-
-  .indexRailBody {
-    margin-top: 0;
-  }
-
-  .indexRailTrack,
-  .indexRailProgress {
-    left: 0.14rem;
-    top: 0.18rem;
-    bottom: 0.18rem;
-  }
-
-  .indexRailList {
-    gap: 0.72rem;
-  }
-
-  .indexRailItem {
-    grid-template-columns: 0.35rem 1fr;
-    gap: 0.38rem;
-  }
-
-  .indexRailItemText {
-    font-size: 0.5rem;
-  }
-
-  .indexRailItem[data-active] .indexRailItemText {
-    color: var(--accent);
-    font-weight: 800;
   }
 }

@@ -108,8 +108,8 @@ export function SectionIndex({ homePhase }: SectionIndexProps) {
     <div
       className={styles.indexRail}
       style={railStyle}
-      data-tone={isDevFlowTakeover ? "dark" : "light"}
-      aria-label="Portfolio index progress"
+      data-surface="navigation"
+      aria-hidden="true"
     >
       <div className={`${styles.indexRailHeader} ${styles.indexRailText}`}>
         <span>INDEX</span>
