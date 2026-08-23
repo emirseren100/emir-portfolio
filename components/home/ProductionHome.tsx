@@ -13,6 +13,7 @@ import { ScoutLabSequence } from "@/components/home/ScoutLabSequence";
 import { AnalyticsSequence } from "@/components/home/AnalyticsSequence";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ContactSection } from "@/components/home/ContactSection";
+import { SectionIndex } from "@/components/home/SectionIndex";
 import { useReducedMotion } from "@/lib/a11y/use-reduced-motion";
 import { motionTokens, type WordmarkState } from "@/lib/motion/tokens";
 import styles from "./home.module.css";
@@ -223,6 +224,11 @@ export function ProductionHome() {
   }, [isMobile, reducedMotion]);
 
   const visibleState: WordmarkState = reducedMotion ? "framing" : isMobile ? "assembled" : wordmarkState;
+  const homeIndexPhase =
+    !isMobile &&
+    (reducedMotion || wordmarkState === "framing" || wordmarkState === "rail" || wordmarkState === "exit")
+      ? "devflow"
+      : "index";
   const visibleStageLabel = reducedMotion ? "WORK / DEVFLOW" : isMobile ? "DEVFLOW / 01" : stageLabel;
   const sequenceHint = reducedMotion
     ? "Static project view"
@@ -263,7 +269,9 @@ export function ProductionHome() {
         </nav>
       </header>
 
-      <section ref={sequenceRef} className={styles.homeSequence} aria-labelledby="home-title">
+      <SectionIndex homePhase={homeIndexPhase} />
+
+      <section ref={sequenceRef} id="index" className={styles.homeSequence} aria-labelledby="home-title">
         <div ref={stageRef} className={styles.homeStage}>
           <div className={styles.stageGrid} aria-hidden="true" />
           <div className={styles.takeoverSurface} aria-hidden="true" />
@@ -324,7 +332,7 @@ export function ProductionHome() {
               <strong>{devflowProject.title}</strong>
               <span>{devflowProject.category}</span>
               <a className={styles.inlineAction} href={devflowProject.liveUrl} target="_blank" rel="noreferrer">
-                <span>VIEW PROJECT</span>
+                <span>OPEN LIVE PROJECT ↗</span>
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M3 13 13 3M5 3h8v8" />
                 </svg>
@@ -352,9 +360,6 @@ export function ProductionHome() {
           <h2 id="selected-work-title">{devflowProject.title}</h2>
           <p className={styles.selectedCategory}>{devflowProject.category}</p>
           <p className={styles.selectedDescription}>{devflowProject.description}</p>
-          <a className={styles.selectedLink} href={devflowProject.liveUrl} target="_blank" rel="noreferrer">
-            Open DevFlow <span aria-hidden="true">↗</span>
-          </a>
         </div>
         <ul className={styles.projectHighlights}>
           {devflowProject.highlights.map((highlight) => (

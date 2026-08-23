@@ -1,0 +1,223 @@
+.indexRail {
+  --index-ink: #111111;
+  --index-track: rgb(17 17 17 / 0.32);
+  position: fixed;
+  z-index: 15;
+  top: 50%;
+  right: clamp(1rem, 2vw, 2.5rem);
+  width: 5.3rem;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.indexRail[data-tone="dark"] {
+  --index-ink: #f5f5f2;
+  --index-track: rgb(245 245 242 / 0.4);
+}
+
+.indexRailText {
+  color: var(--index-ink);
+}
+
+.indexRailHeader {
+  display: grid;
+  gap: 0.28rem;
+  border-top: 1px solid currentColor;
+  padding-top: 0.5rem;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.indexRailHeader span:last-child {
+  opacity: 0.58;
+}
+
+.indexRailBody {
+  position: relative;
+  margin-top: 0.85rem;
+}
+
+.indexRailTrack,
+.indexRailProgress {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.14rem;
+  width: 1px;
+}
+
+.indexRailTrack {
+  background: var(--index-track);
+}
+
+.indexRailProgress {
+  background: var(--accent);
+  transform: scaleY(var(--index-progress));
+  transform-origin: top;
+  transition: transform 180ms linear;
+}
+
+.indexRailList {
+  position: relative;
+  display: grid;
+  gap: 0.56rem;
+  list-style: none;
+}
+
+.indexRailItem {
+  display: grid;
+  grid-template-columns: 0.35rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.42;
+  transition: opacity 180ms linear;
+}
+
+.indexRailItem[data-active] {
+  opacity: 1;
+}
+
+.indexRailDot {
+  display: block;
+  width: 0.32rem;
+  height: 0.32rem;
+  border: 1px solid currentColor;
+}
+
+.indexRailItem[data-active] .indexRailDot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.indexRailItemText {
+  display: flex;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.indexRailItemLabel {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 180ms linear,
+    margin-left 180ms linear,
+    opacity 180ms linear;
+}
+
+.indexRailItem[data-active] .indexRailItemLabel {
+  max-width: 5rem;
+  margin-left: 0.42rem;
+  opacity: 0.78;
+}
+
+.indexRailCurrent {
+  margin-top: 0.8rem;
+  border-top: 1px solid currentColor;
+  padding-top: 0.5rem;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indexRailProgress,
+  .indexRailItem,
+  .indexRailItemLabel {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899.98px) {
+  .indexRail {
+    top: 68%;
+    right: 0.5rem;
+    width: 2.3rem;
+  }
+
+  .indexRailHeader,
+  .indexRailCurrent,
+  .indexRailItemLabel {
+    display: none;
+  }
+
+  .indexRailBody {
+    margin-top: 0;
+  }
+
+  .indexRailTrack,
+  .indexRailProgress {
+    top: 0.18rem;
+    bottom: 0.18rem;
+  }
+
+  .indexRailList {
+    gap: 0.66rem;
+  }
+
+  .indexRailItem {
+    grid-template-columns: 0.35rem 1fr;
+    gap: 0.38rem;
+  }
+
+  .indexRailItemText {
+    font-size: 0.5rem;
+  }
+
+  .indexRailItem[data-active] .indexRailItemText {
+    color: var(--accent);
+    font-weight: 800;
+  }
+}
+
+@media (max-width: 767px) {
+  .indexRail {
+    right: 0.35rem;
+    width: 2.2rem;
+  }
+
+  .indexRailHeader,
+  .indexRailCurrent,
+  .indexRailItemLabel {
+    display: none;
+  }
+
+  .indexRailBody {
+    margin-top: 0;
+  }
+
+  .indexRailTrack,
+  .indexRailProgress {
+    left: 0.14rem;
+    top: 0.18rem;
+    bottom: 0.18rem;
+  }
+
+  .indexRailList {
+    gap: 0.72rem;
+  }
+
+  .indexRailItem {
+    grid-template-columns: 0.35rem 1fr;
+    gap: 0.38rem;
+  }
+
+  .indexRailItemText {
+    font-size: 0.5rem;
+  }
+
+  .indexRailItem[data-active] .indexRailItemText {
+    color: var(--accent);
+    font-weight: 800;
+  }
+}
